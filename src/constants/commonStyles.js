@@ -32,6 +32,9 @@ export const headingCommonStyle={
     marginTop: '5@s',
     marginBottom: '16@s'
  }
+export const FixedButtonBackground={
+  backgroundColor:'rgba(255,255,255,0.8)', paddingVertical:scale(15)
+ }
 export const headings = {
   h1: {
     fontSize:scale(14.5),

@@ -1,4 +1,4 @@
-import {View, Text, Image, ScrollView, TouchableOpacity} from 'react-native';
+import {View, Text, ScrollView, TouchableOpacity} from 'react-native';
 import React from 'react';
 import SafeAreaWrapper from '../constants/SafeAreaWrapper';
 import CustomBottomTab from '../components/CustomBottomTab';
@@ -21,9 +21,10 @@ import NotificationSVG from '../svgs/NotificationSVG';
 import {gray100, gray600} from '../constants/Colors';
 import {lightShadow} from '../constants/Shadows';
 import {SliderData} from '../constants/data';
+import FastImage from 'react-native-fast-image';
 const HeaderHome = () => {
   return (
-    <View style={{paddingVertical: scale(10)}}>
+    <View style={{paddingVertical: scale(10), marginHorizontal: scale(7)}}>
       <Text style={[[[body.bodyXSRegular, {marginBottom: scale(5)}]]]}>
         Location
       </Text>
@@ -42,7 +43,7 @@ const HeaderHome = () => {
           {
             top: scale(10),
             backgroundColor: gray100,
-            padding: scale(5),
+            padding: scale(4),
             borderRadius: scale(50),
           },
         ]}>
@@ -75,9 +76,12 @@ const Home = ({navigation}) => {
           <View style={styles.containe}>
             {/* header */}
             <HeaderHome />
-            {/* <Header title={'DoctorApp'} icon={require('../images/logo.png')} /> */}
             <View style={{borderRadius: 10, marginHorizontal: scale(10)}}>
-              <Image source={SliderData.image} style={[styles.banner]} />
+              <FastImage
+                source={SliderData.image}
+                style={[styles.banner]}
+                resizeMode={FastImage.resizeMode.cover}
+              />
               <View
                 style={[
                   absolute,

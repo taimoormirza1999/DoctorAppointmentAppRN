@@ -1,28 +1,28 @@
-import {Image, StatusBar, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import { StatusBar, Text, View} from 'react-native';
 import React, {useRef} from 'react';
 import Onboarding from 'react-native-onboarding-swiper';
 import {width} from '../constants/DimensionFontSizes';
 import Button from '../components/Button';
 import {primaryDarkColor} from '../constants/Colors';
-import {RFPercentage, RFValue} from 'react-native-responsive-fontsize';
 import {scale, ScaledSheet} from 'react-native-size-matters';
-import { mediumShadow} from '../constants/Shadows'
+import { cardShadow, lightShadow, mediumShadow} from '../constants/Shadows'
 import { useNavigation } from '@react-navigation/native';
+import FastImage from 'react-native-fast-image';
 const DynamicComponent = ({handleNext, title, description, image}) => {
   return (
     <View style={{}}>
       <View style={{flex: 0.8}}>
-        <Image
-          source={image}
-          style={{
-            resizeMode: 'cover',
-            flex: 1,
-            height: width,
-            width: width,
-          }}
-        />
+        <FastImage
+  source={image}
+  style={{
+    flex: 1,
+    height: width,
+    width: width,
+  }}
+  resizeMode={FastImage.resizeMode.cover} 
+/>
       </View>
-      <View style={[styles.bottomCard, mediumShadow]}>
+      <View style={[styles.bottomCard, cardShadow]}>
         <Text style={styles.title}>{title}</Text>
         <Text style={styles.description}>
           {description}
@@ -39,7 +39,7 @@ const OnBoarding = () => {
   const images = {
     Doctor1: require('../images/main/Doctor1.png'),
     Doctor2: require('../images/main/Doctor5.png'),
-    Doctor3: require('../images/main/Doctor9.png'),
+    Doctor3: require('../images/main/Doctor10.png'),
 
   };
   const handleNext = () => {
@@ -128,10 +128,13 @@ const styles = ScaledSheet.create({
     flex: 0.3,
     backgroundColor: 'white',
     marginTop: '-20@s',
+    paddingBottom:'10@s',
     alignSelf: 'center',
     justifyContent: 'center',
     alignItems: 'center',
     paddingHorizontal: width * 0.03,
+    marginBottom:'-7@s',
+    paddingTop: '5@s',
     // borderRadius: width * 0.05,
     borderTopLeftRadius: width * 0.05,
     borderTopRightRadius: width * 0.05,

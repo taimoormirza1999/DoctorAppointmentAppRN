@@ -1,13 +1,13 @@
-import {View, Text, StyleSheet, Image, StatusBar} from 'react-native';
+import {View, Text, StyleSheet, StatusBar} from 'react-native';
 import React, {useEffect} from 'react';
 import SplashCardRow from '../components/Splash/SplashCardRow';
 import {TestingHighLighter} from '../constants/commonStyles';
 import {height, width} from '../constants/DimensionFontSizes';
+import FastImage from 'react-native-fast-image';
 
 // bigImage2==null
 
 const splashData = [
-  //c i c
   {
     position1: {color: '#ACA1CD'},
     position2: {image: 'Doctor1'},
@@ -46,7 +46,7 @@ const Splash = ({navigation}) => {
       ))}
       <View
         style={{
-          backgroundColor: 'rgba(0,0,0,0.4)',
+          backgroundColor: 'rgba(0,0,0,0.35)',
           position: 'absolute',
           top: 0,
           flex: 1,
@@ -55,12 +55,12 @@ const Splash = ({navigation}) => {
           justifyContent: 'center',
           alignItems: 'center',
         }}>
-        <Image
+        <FastImage
           source={require('../images/mlogo.png')}
+          resizeMode={FastImage.resizeMode.contain}
           style={{
             height: width * 0.3,
             width: width * 0.3,
-            resizeMode: 'contain',
             zIndex: 999999999,
             position: 'absolute',
             top: height * 0.43,

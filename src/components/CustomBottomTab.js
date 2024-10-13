@@ -1,7 +1,7 @@
 import {Image, StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 import React from 'react';
 import {lightShadow, mediumShadow} from '../constants/Shadows';
-import {ScaledSheet} from 'react-native-size-matters';
+import {scale, ScaledSheet} from 'react-native-size-matters';
 
 import appointmentImage from '../images/Icons/Appointment.png';
 import {gray200, gray300, gray400, gray600} from '../constants/Colors';
@@ -17,7 +17,7 @@ const ItemCompo = ({children, image, text, active, handlerAction}) => {
     <TouchableOpacity style={[styles.buttonWrapper]} onPress={handlerAction}>
       <View
         style={{
-          padding: 5,
+          padding: scale(7),
           backgroundColor: active ? gray200 : 'white',
           lightShadow,
           borderRadius: 50,

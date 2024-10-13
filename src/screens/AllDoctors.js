@@ -16,7 +16,7 @@ const AllDoctors = ({navigation}) => {
           style={styles.container}
           showsVerticalScrollIndicator={false}>
           <View style={styles.containe}>
-            <HeaderTitle title="All Doctors"/>
+            <HeaderTitle title="All Doctors" navigation={navigation}/>
             {/* <Image
               source={require('../images/banner.png')}
               style={styles.banner}

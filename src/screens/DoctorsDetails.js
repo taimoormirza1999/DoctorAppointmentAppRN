@@ -22,6 +22,7 @@ import TwoUsersSVG from '../svgs/TwoUsersSVG';
 import {
   absolutePosWValue,
   AlignSelf,
+  FixedButtonBackground,
   justRow,
   VerticalHorizontalCenter,
 } from '../constants/commonStyles';
@@ -30,6 +31,7 @@ import MessagesSVG from '../svgs/MessagesSVG';
 import StarSVG from '../svgs/StarSVG';
 import MedalSVG from '../svgs/MedalSVG';
 import Button from '../components/Button';
+import FastImage from 'react-native-fast-image';
 
 const TabItem = ({
   icon: Icon,
@@ -125,7 +127,7 @@ const DoctorsDetails = ({navigation}) => {
             <View style={styles.section}>
               <Text style={[styles.heading]}>Reviews</Text>
               <View style={[justRow]}>
-                <Image
+                <FastImage
                   source={require('../images/profile-customer.png')}
                   style={styles.profileUserImage}
                 />
@@ -156,8 +158,9 @@ const DoctorsDetails = ({navigation}) => {
         </ScrollView>
         <View
           style={[
-            absolutePosWValue('bottom', 15),
-            {width: '100%', alignItems: 'center'},
+            FixedButtonBackground,
+            absolutePosWValue('bottom', 0),
+            {width: '100%', alignItems: 'center',},
           ]}>
           <Button text={'BookBook Appointment'} handleNext={()=>navigation.navigate("BookAppointment")} />
         </View>

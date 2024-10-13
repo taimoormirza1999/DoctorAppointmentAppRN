@@ -5,6 +5,13 @@ const lightShadow={
     shadowOpacity: 0.1, 
     shadowRadius: 2, 
   }
+const cardShadow={
+  elevation: 4, // Android shadow
+  shadowColor: "#000", // iOS shadow color
+  shadowOffset: { width: 0, height: 2 }, // A more subtle iOS shadow offset
+  shadowOpacity: 0.1, // Reduced opacity for a smoother look
+  shadowRadius: 4, 
+  }
 
   // Medium shadow
   const mediumShadow= {
@@ -25,4 +32,4 @@ const lightShadow={
   }
 
 
-  export { lightShadow, mediumShadow, heavyShadow };
+  export { lightShadow, mediumShadow, heavyShadow,cardShadow };

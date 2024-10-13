@@ -1,4 +1,4 @@
-import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {Text, TouchableOpacity, View} from 'react-native';
 import React from 'react';
 import {lightShadow, mediumShadow} from '../constants/Shadows';
 import {scale, ScaledSheet} from 'react-native-size-matters';
@@ -7,24 +7,23 @@ import {gray500, gray600, gray800} from '../constants/Colors';
 import { AlignSelf } from '../constants/commonStyles';
 import Icon from 'react-native-vector-icons/AntDesign';
 import LocationSVG from '../svgs/LocationSVG';
+import FastImage from 'react-native-fast-image';
 
 const DoctorCardHorizontal = ({extraval1, image, ratting, doctorName, category,location, reviews,handleAction}) => {
   return (
     <TouchableOpacity onPress={handleAction} style={[styles.docItem, mediumShadow]}>
     <View style={styles.ImageSide}>
-    <Image
+    <FastImage
         source={image}
         style={[styles.docImg, lightShadow]}
+        resizeMode={FastImage.resizeMode.cover}
       />
     </View>
    <View style={styles.TextSide}>
    <Text style={styles.docName}>{doctorName}</Text>
       <Text style={styles.docCat}>{category}</Text>
       <View style={[{flexDirection: 'row'}, styles.locationView]}>
-        {/* <Image
-          source={require('../images/Icons/Location.png')}
-          style={styles.Icon}
-        /> */}
+      
         <LocationSVG width={scale(17)} height={scale(17)} strokeWidth={1.8} />
          {/* <Icon name="rocket" size={30} color="#900" /> */}
         <Text style={styles.text}>{location}</Text>
