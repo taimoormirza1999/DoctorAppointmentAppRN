@@ -1,4 +1,4 @@
-import { scale } from 'react-native-size-matters';
+import {scale} from 'react-native-size-matters';
 import {
   buttonPadding,
   fontSizes,
@@ -8,13 +8,104 @@ import {
 } from './DimensionFontSizes';
 import {current} from '@reduxjs/toolkit';
 // Colors
-const primaryColor = '#3378BB';
+
 export const primaryGratyColor = '#EDEDED';
 export const BoldFont = 'OpenSans-Bold';
 export const SemiBoldFont = 'OpenSans-SemiBold';
 
 export const HeaderTopMargin = 15;
-
+export const relative = {position: 'relative'};
+export const absolute = {position: 'absolute'};
+export const w100={
+ width:'100%'
+}
+export const w70={
+ width:'70%'
+}
+export const w80={
+ width:'80%'
+}
+export const sectionSeprator={
+ marginVertical:scale(10)
+ }
+export const headingCommonStyle={
+    marginTop: '5@s',
+    marginBottom: '16@s'
+ }
+export const headings = {
+  h1: {
+    fontSize:scale(14.5),
+    fontWeight: '700',
+    fontFamily:'Inter_18pt-Bold',
+  },
+  h2: {
+    fontSize: scale(14.5),
+    fontWeight: '700',
+    lineHeight: scale(20),
+    fontFamily:'Inter_18pt-Bold',
+  },
+  h3: {
+    fontSize: '12.5@s',
+    fontWeight: '800',
+    lineHeight: '145%',
+  },
+};
+export const body = {
+  bodyXL: {
+    fontSize: '14.5@s',
+    fontWeight: '800',
+    lineHeight: '145%',
+  },
+  bodyLG: {
+    fontSize: '13.5@s',
+    fontWeight: '700',
+    lineHeight: '145%',
+  },
+  bodySBold: {
+    fontSize: '12.5@s',
+    fontWeight: '800',
+    lineHeight: '145%',
+  },
+  bodySSemiBold: {
+    fontSize: scale(11),
+    fontWeight: '700',
+    lineHeight: scale(18),
+    fontFamily:'Inter_18pt-SemiBold',
+  },
+  bodySMedium: {
+    fontSize: scale(11),
+    fontWeight: '700',
+    lineHeight: '145%',
+    fontFamily:'Inter_18pt-Medium',
+  },
+  bodySRegular: {
+    fontSize: scale(12.5),
+    fontFamily:'Inter_18pt-Regular',
+    lineHeight: '145%',
+  },
+  bodyXSBold: {
+    fontSize: '12.5@s',
+    fontWeight: '800',
+    lineHeight: '145%',
+  },
+  bodyXSSemiBold: {
+    fontSize: scale(11),
+    fontWeight: '800',
+    lineHeight: '145%',
+    fontFamily:'Inter_18pt-SemiBold',
+    },
+  bodyXSMedium: {
+    fontSize: '12.5@s',
+    fontWeight: '800',
+    lineHeight: '145%',
+  },
+  bodyXSRegular: {
+    fontSize: scale(11),
+    fontWeight: '400',
+    lineHeight: '145%',
+    fontFamily:'Inter_18pt-Regular'
+    },
+};
 // Other Styles
 // const pageHeader={
 //     paddingBottom: 8,
@@ -147,6 +238,14 @@ export const absolutePosWValue = (position, value) => {
     left: position == 'left' ? scale(value) : null,
     bottom: position == 'bottom' ? scale(value) : null,
   };
+};
+export const absolutePosWJustValue = (position, value) => {
+  return {
+    top: position == 'top' ? scale(value) : null,
+    right: position == 'right' ? scale(value) : null,
+    left: position == 'left' ? scale(value) : null,
+    bottom: position == 'bottom' ? scale(value) : null,
+  }
 };
 // //Modal End
 

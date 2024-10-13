@@ -1,10 +1,12 @@
-import {Image, ScrollView, StyleSheet, Text, View} from 'react-native';
+import {Image, ScrollView, Text, View} from 'react-native';
 import React from 'react';
 import SafeAreaWrapper from '../constants/SafeAreaWrapper';
 import DoctorsList from '../components/DoctorsList';
 import CustomBottomTab from '../components/CustomBottomTab';
 import {ScaledSheet} from 'react-native-size-matters';
 import {width} from '../constants/DimensionFontSizes';
+import HeaderTitle from '../components/HeaderTitle';
+import { headingCommonStyle, headings, sectionSeprator } from '../constants/commonStyles';
 
 const AllDoctors = ({navigation}) => {
   return (
@@ -14,12 +16,15 @@ const AllDoctors = ({navigation}) => {
           style={styles.container}
           showsVerticalScrollIndicator={false}>
           <View style={styles.containe}>
-            <Image
+            <HeaderTitle title="All Doctors"/>
+            {/* <Image
               source={require('../images/banner.png')}
               style={styles.banner}
-            />
+            /> */}
 
-            <Text style={[styles.heading, styles.section]}>
+
+
+            <Text style={[headings.h1,headingCommonStyle, sectionSeprator]}>
               Top Rated Doctors
             </Text>
             <View style={{marginTop: 20, alignItems: 'center'}}>

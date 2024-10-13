@@ -11,19 +11,46 @@ import {
 import React, {useEffect, useState} from 'react';
 import Header from '../components/Header';
 import CommonBtn from '../components/CommonBtn';
+import HeaderTitle from '../components/HeaderTitle';
+import SafeAreaWrapper from '../constants/SafeAreaWrapper';
+import CustomBottomTab from '../components/CustomBottomTab';
+import {Calendar} from 'react-native-calendars';
+import {gray200, primaryDarkColor} from '../constants/Colors';
+import {AlignSelf, headings, sectionSeprator} from '../constants/commonStyles';
+import {lightShadow} from '../constants/Shadows';
+import TimeSlot from '../components/TimeSlot';
+import Button from '../components/Button';
+import { scale, ScaledSheet } from 'react-native-size-matters';
+
 let DaysList = [];
 const BookAppointment = ({navigation}) => {
   const [selectedSlot, setSelectedSlot] = useState(-1);
   const [selectedGender, setSelectedGender] = useState(0);
   const [selectedDay, setSelectedDay] = useState(-1);
-  const [slots, setSlots] = useState([
-    {sloT: '10:00-12:00PM', selected: false},
-    {sloT: '12:00-02:00PM', selected: false},
-    {sloT: '02:00-04:00PM', selected: false},
-    {sloT: '04:00-06:00PM', selected: false},
-    {sloT: '06:00-08:00PM', selected: false},
-    {sloT: '08:00-11:00PM', selected: false},
+  const onDayPress = (day) => {
+    setSelectedDate(day.dateString);
+  };
+  const [timeSlotStates, setTimeSlotStates] = useState([
+    {text: '09:00 AM', fill: false},
+    {text: '09:30 AM', fill: false},
+    {text: '10:00 AM', fill: false},
+    {text: '10:30 AM', fill: false},
+    {text: '11:00 AM', fill: false},
+    {text: '11:30 AM', fill: false},
+    {text: '03:00 PM', fill: false},
+    {text: '03:30 PM', fill: false},
+    {text: '04:00 PM', fill: false},
+    {text: '04:30 PM', fill: false},
+    {text: '05:00 PM', fill: false},
+    {text: '05:30 PM', fill: true},
   ]);
+  const today = new Date();
+  const SixDaysLater = new Date(today);
+  SixDaysLater.setDate(SixDaysLater.getDate() + 3);
+
+  const sixDaysLaterDate = SixDaysLater.toISOString().slice(0, 10);
+  const [selectedDate, setSelectedDate] = useState(sixDaysLaterDate);
+
   const [days, setDays] = useState([]);
 
   useEffect(() => {
@@ -62,154 +89,109 @@ const BookAppointment = ({navigation}) => {
     }
     return days;
   };
+
+  const handleTimeSlotPress = index => {
+    const newTimeSlotStates = timeSlotStates.map((slot, i) => ({
+      ...slot,
+      fill: i === index ? !slot.fill : false,
+    }));
+    setTimeSlotStates(newTimeSlotStates);
+    setSelectedSlot(timeSlotStates[index]?.text);
+  };
+
   return (
-    <ScrollView style={styles.container}>
+    <SafeAreaWrapper backgroundColor={'white'}>
+     <ScrollView>
+     <HeaderTitle title={'Book Appointment'} navigation={navigation} />
       <View style={styles.container}>
-        <Header
-          icon={require('../images/back.png')}
-          title={'Book Appointment'}
-        />
-        <Image source={require('../images/doctor.png')} style={styles.docImg} />
-        <Text style={styles.name}>Doctor Jack</Text>
-        <Text style={styles.spcl}>Skin Doctor</Text>
-        <Text style={styles.heading}>Select Date</Text>
-        <View style={{marginTop: 20}}>
-          <FlatList
-            horizontal
-            showsHorizontalScrollIndicator={false}
-            data={days}
-            keyExtractor={({item, index}) => index}
-            renderItem={({item, index}) => {
-              return (
-                <TouchableOpacity
-                  style={{
-                    width: 60,
-                    height: 70,
-                    borderRadius: 20,
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    backgroundColor: selectedDay == index ? 'blue' : 'white',
-                    borderWidth: selectedDay == index ? 0 : 1,
-                    marginLeft: 10,
-                  }}
-                  onPress={() => {
-                    if (item.day < new Date().getDate()) {
-                    } else {
-                      setSelectedDay(index);
-                    }
-                  }}>
-                  <Text style={{color: selectedDay == index ? '#fff' : 'blue'}}>
-                    {item.day}
-                  </Text>
-                </TouchableOpacity>
-              );
+        <View style={[styles.compoCard, AlignSelf, sectionSeprator,{width: '100%'}]}>
+          <Text style={[headings.h1,styles.headingStyle,]}>Select Date</Text>
+          <Calendar
+            theme={{
+              backgroundColor: 'white',
+              calendarBackground: 'white',
+              textSectionTitleColor: '#b6c1cd',
+              selectedDayBackgroundColor: primaryDarkColor,
+              selectedDayTextColor: '#ffffff',
+              todayTextColor: primaryDarkColor,
+              dayTextColor: '#2d4150',
+              textDisabledColor: gray200,
+              arrowColor: primaryDarkColor,
+            }}
+            style={[
+              lightShadow,
+              {
+                width: '100%',
+                borderWidth: 0.05,
+                borderColor: 'gray',
+                borderRadius: 10,
+              },
+            ]}
+            onDayPress={onDayPress}
+            hideArrows={false}
+            markedDates={{
+              [selectedDate]: {
+                selected: true,
+                marked: true,
+                selectedColor: primaryDarkColor,
+                selectedDotColor: 'primaryDarkColor',
+              },
             }}
           />
         </View>
-        <Text style={styles.heading}>Available Slots</Text>
-        <View>
-          <FlatList
-            numColumns={2}
-            data={slots}
-            keyExtractor={({item, index}) => index}
-            renderItem={({item, index}) => {
-              return (
-                <TouchableOpacity
-                  style={[
-                    styles.timeSlot,
-                    {borderColor: index == selectedSlot ? 'blue' : 'black'},
-                  ]}
-                  onPress={() => {
-                    setSelectedSlot(index);
-                  }}>
-                  <Text
-                    style={{color: index == selectedSlot ? 'blue' : 'black'}}>
-                    {item.sloT}
-                  </Text>
-                </TouchableOpacity>
-              );
-            }}
-          />
-        </View>
-        <Text style={styles.heading}>Patient Name</Text>
-        <TextInput style={styles.nameInput} placeholder={'Enter Name'} />
-        <Text style={styles.heading}>Select Gender</Text>
-        <View style={styles.genderView}>
-          <TouchableOpacity
-            style={[
-              styles.gender,
-              {
-                borderWidth: 0.5,
-                borderColor: selectedGender == 0 ? 'blue' : 'black',
-              },
-            ]}
-            onPress={() => {
-              setSelectedGender(0);
-            }}>
-            <Image
-              source={require('../images/male.png')}
-              style={{width: 24, height: 24}}
+       <View style={sectionSeprator}>
+       <Text style={[headings.h1,styles.headingStyle, {alignSelf:'flex-start'}]}>Select Hours</Text>
+        <View
+          style={{
+            width: '100%',
+            flexDirection: 'row',
+            justifyContent: 'space-around',
+            flexWrap: 'wrap',
+          }}>
+          {timeSlotStates.map((slot, index) => (
+            <TimeSlot
+              key={index}
+              text={slot.text}
+              sColor={primaryDarkColor}
+              // b2lColor={blues2_light}
+              fill={slot.fill}
+              onPress={() => handleTimeSlotPress(index)}
             />
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={[
-              styles.gender,
-              {
-                borderWidth: 0.5,
-                borderColor: selectedGender == 1 ? 'blue' : 'black',
-              },
-            ]}
-            onPress={() => {
-              setSelectedGender(1);
-            }}>
-            <Image
-              source={require('../images/female.png')}
-              style={{width: 24, height: 24}}
-            />
-          </TouchableOpacity>
+          ))}
         </View>
-        <View style={styles.btnView}>
-          <CommonBtn
-            w={300}
-            h={45}
-            txt={'Book Now'}
-            status={true}
-            onClick={() => {
+       </View>
+      <View style={[AlignSelf, {width: '100%', alignItems: 'center',marginBottom:scale(10)},]}>
+          <Button
+            text={'Done'}
+            handleNext={() => {
               navigation.navigate('Success');
             }}
           />
         </View>
       </View>
-    </ScrollView>
+     </ScrollView>
+    
+      {/* <CustomBottomTab activeTab={''} navigation={navigation} /> */}
+    </SafeAreaWrapper>
   );
 };
 
 export default BookAppointment;
-const styles = StyleSheet.create({
-  container: {flex: 1, backgroundColor: '#fff'},
-  docImg: {
-    width: 100,
-    height: 100,
-    marginTop: 50,
-    alignSelf: 'center',
-  },
-  name: {
-    fontSize: 20,
-    fontWeight: '700',
-    alignSelf: 'center',
-    marginTop: 10,
+const styles = ScaledSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    width: '90%',
+    alignItems: 'center',
+    marginHorizontal: 'auto',
   },
 
-  spcl: {
-    fontSize: 16,
-    fontWeight: '700',
-    alignSelf: 'center',
-    marginTop: 10,
-    backgroundColor: '#f2f2f2',
-    color: 'green',
-    padding: 5,
-    borderRadius: 10,
+  headingStyle: {
+    marginTop: '5@s',
+    marginBottom: '16@s',
   },
+
+
   heading: {
     color: '#000',
     fontSize: 18,
@@ -226,27 +208,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  nameInput: {
-    borderRadius: 10,
-    marginTop: 10,
-    width: '94%',
-    height: 45,
-    borderWidth: 0.5,
-    alignSelf: 'center',
-    paddingLeft: 20,
-  },
   genderView: {
     marginTop: 20,
     justifyContent: 'space-evenly',
     alignItems: 'center',
     flexDirection: 'row',
   },
-  gender: {
-    borderRadius: 10,
-    width: 60,
-    height: 60,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  btnView: {marginTop: 20, marginBottom: 20},
+ 
 });

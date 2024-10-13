@@ -20,7 +20,6 @@ const CardItem = ({text, children}) => {
   return (
     <View style={styles.cardItem}>
       {children}
-      {/* <Image source={image} style={[styles.cardImage, mediumShadow]} /> */}
       <Text style={styles.cardText}>{text}</Text>
     </View>
   );
@@ -75,10 +74,10 @@ const styles = ScaledSheet.create({
     margin: '4@s',
   },
   cardText: {
-    fontSize: '10@s',
+    fontSize: '10.3@s',
     fontWeight: 'bold',
     color: gray600,
-    marginTop: '6@s',
+    marginTop: '10@s',
     color: '#333',
     textAlign: 'left',
   },

@@ -4,7 +4,7 @@ import {lightShadow, mediumShadow} from '../constants/Shadows';
 import {ScaledSheet} from 'react-native-size-matters';
 
 import appointmentImage from '../images/Icons/Appointment.png';
-import {gray200, gray400, gray600} from '../constants/Colors';
+import {gray200, gray300, gray400, gray600} from '../constants/Colors';
 import {useNavigation} from '@react-navigation/native';
 import Home from '../screens/Home';
 import AppointmentSVG from '../svgs/AppointmentSVG';
@@ -96,15 +96,15 @@ const styles = ScaledSheet.create({
   },
 
   bottomView: {
-    width: '95%',
+    width: '100%',
     height: '50@s',
-    borderTopRightRadius: '15@s',
-    borderTopLeftRadius: '15@s',
+    borderTopRightRadius: '10@s',
+    borderTopLeftRadius: '10@s',
     elevation: 5,
-    borderColor: gray400,
+    borderColor: gray300,
     borderWidth: 0.19,
     position: 'absolute',
-    bottom: '0@s',
+    bottom: '-1@s',
     backgroundColor: '#fff',
     alignSelf: 'center',
     flexDirection: 'row',

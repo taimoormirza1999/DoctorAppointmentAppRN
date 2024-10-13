@@ -7,8 +7,8 @@ import {iconSizes} from '../constants/DimensionFontSizes';
 
 const HeaderTitle = ({title, icon, navigation}) => {
   const handleBack = () => {
-    // navigation.goBack();
-    navigation.navigate('Home');
+    navigation.goBack();
+    // navigation.navigate('Home');
   };
   return (
     <View style={styles.header}>

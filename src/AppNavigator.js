@@ -17,7 +17,7 @@ const Stack = createNativeStackNavigator();
 const AppNavigator = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="DoctorsDetails" >
+      <Stack.Navigator initialRouteName="BookAppointment">
         <Stack.Screen
           component={Splash}
           name="Splash"
@@ -31,7 +31,7 @@ const AppNavigator = () => {
         <Stack.Screen
           component={DoctorsDetails}
           name="DoctorsDetails"
-          options={{headerShown: false}}
+          options={{headerShown: false, animation: 'slide_from_bottom'}}
         />
         <Stack.Screen
           component={SafeAreaWrapper}
@@ -51,12 +51,12 @@ const AppNavigator = () => {
         <Stack.Screen
           component={BookAppointment}
           name="BookAppointment"
-          options={{headerShown: false}}
+          options={{headerShown: false,}}
         />
         <Stack.Screen
           component={Success}
           name="Success"
-          options={{headerShown: false}}
+          options={{headerShown: false, animation:'slide_from_bottom'}}
         />
         <Stack.Screen
           component={Pending}

@@ -1,24 +1,70 @@
-import {
-  View,
-  Text,
-  StyleSheet,
-  Image,
-  FlatList,
-  TouchableOpacity,
-  ScrollView,
-} from 'react-native';
+import {View, Text, Image, ScrollView, TouchableOpacity} from 'react-native';
 import React from 'react';
-import Header from '../components/Header';
-import LinearGradient from 'react-native-linear-gradient';
-import CommonBtn from '../components/CommonBtn';
 import SafeAreaWrapper from '../constants/SafeAreaWrapper';
 import CustomBottomTab from '../components/CustomBottomTab';
 import {scale, ScaledSheet} from 'react-native-size-matters';
 import Categories from '../components/Categories';
-import {width} from '../constants/DimensionFontSizes';
-import DoctorCardVertical from '../components/DoctorCardVertical';
-import {DoctorsImages} from '../constants/DoctorsImages';
 import DoctorsList from '../components/DoctorsList';
+import {
+  absolute,
+  absolutePosWJustValue,
+  absolutePosWValue,
+  body,
+  headings,
+  justRow,
+  relative,
+  w100,
+  w70,
+} from '../constants/commonStyles';
+import LocationSVG from '../svgs/LocationSVG';
+import NotificationSVG from '../svgs/NotificationSVG';
+import {gray100, gray600} from '../constants/Colors';
+import {lightShadow} from '../constants/Shadows';
+import {SliderData} from '../constants/data';
+const HeaderHome = () => {
+  return (
+    <View style={{paddingVertical: scale(10)}}>
+      <Text style={[[[body.bodyXSRegular, {marginBottom: scale(5)}]]]}>
+        Location
+      </Text>
+      <View style={[justRow, w100]}>
+        <View style={[justRow]}>
+          <LocationSVG height={scale(18)} width={scale(18)} />
+          <Text style={[[body.bodySSemiBold, {marginLeft: 5}]]}>
+            New York, USA
+          </Text>
+        </View>
+      </View>
+      <TouchableOpacity
+        style={[
+          absolutePosWValue('right', scale(10)),
+          lightShadow,
+          {
+            top: scale(10),
+            backgroundColor: gray100,
+            padding: scale(5),
+            borderRadius: scale(50),
+          },
+        ]}>
+        <View style={[relative]}>
+          <NotificationSVG fill={gray600} />
+          <View
+            style={[
+              absolute,
+              absolutePosWJustValue('right', 2),
+              {
+                backgroundColor: 'red',
+                height: scale(6),
+                width: scale(6),
+                borderRadius: scale(50),
+                top: 3,
+              },
+            ]}></View>
+        </View>
+      </TouchableOpacity>
+    </View>
+  );
+};
 const Home = ({navigation}) => {
   return (
     <SafeAreaWrapper backgroundColor={'white'}>
@@ -27,78 +73,44 @@ const Home = ({navigation}) => {
           style={styles.container}
           showsVerticalScrollIndicator={false}>
           <View style={styles.containe}>
-            <Header title={'DoctorApp'} icon={require('../images/logo.png')} />
-            <Image
-              source={require('../images/banner.png')}
-              style={styles.banner}
-            />
+            {/* header */}
+            <HeaderHome />
+            {/* <Header title={'DoctorApp'} icon={require('../images/logo.png')} /> */}
+            <View style={{borderRadius: 10, marginHorizontal: scale(10)}}>
+              <Image source={SliderData.image} style={[styles.banner]} />
+              <View
+                style={[
+                  absolute,
+                  {
+                    backgroundColor: 'rgba(0,0,0,0.18)',
+                    height: '93%',
+                    width: '100%',
+                    marginTop: scale(7),
+                    borderRadius: scale(10),
+                  },
+                ]}>
+                <View style={[w70, {left: scale(13), top: '30%'}]}>
+                  <Text style={[headings.h2, styles.SlideHeading]}>
+                    {SliderData.title}
+                  </Text>
+                  <Text style={[body.bodySMedium, styles.SlideBody]}>
+                    {SliderData.description}
+                  </Text>
+                </View>
+              </View>
+            </View>
 
             <View style={styles.section}>
-              <Text style={styles.heading}>Categories</Text>
+              <Text style={[headings.h1, styles.heading]}>Categories</Text>
               <Categories />
-              {/* <FlatList
-              data={[1, 1, 1, 1, 1, 1, 1]}
-              horizontal
-              showsHorizontalScrollIndicator={false}
-              renderItem={({item, index}) => {
-                return (
-                  <TouchableOpacity>
-                    <LinearGradient
-                      colors={['#009FFD', '#2A2A72']}
-                      style={styles.linearGradient}>
-                      <Text style={styles.catName}>
-                        {'Category ' + index + 1}
-                      </Text>
-                    </LinearGradient>
-                  </TouchableOpacity>
-                );
-              }}
-            /> */}
-              {/* image, ratting, doctorName, category,location */}
             </View>
-            <Text style={[styles.heading, styles.section]}>
-              Top Rated Doctors
-            </Text>
-            <View style={{marginTop: 20, alignItems: 'center'}}>
-              <DoctorsList navigation={navigation} />
-              <View style={{flexDirection: 'row', width: '100%'}}></View>
-              {/* <FlatList
-                numColumns={2}
-                data={[1, 1, 1, 1, 1, 1]}
-                renderItem={({item, index}) => {
-                  return (
-                    <View style={styles.docItem}>
-                      <Image
-                        source={require('../images/doctor.png')}
-                        style={styles.docImg}
-                      />
-                      <Text style={styles.docName}>Doctor {index + 1}</Text>
-                      <Text style={styles.docSpl}>Skin Specialist</Text>
-                      <Text
-                        style={[
-                          styles.status,
-                          {
-                            color: index / 2 == 0 ? 'green' : 'red',
-                            opacity: index / 2 == 0 ? 1 : 0.5,
-                          },
-                        ]}>
-                        {index / 2 == 0 ? 'Available' : 'Busy'}
-                      </Text>
-                      <CommonBtn
-                        w={150}
-                        h={40}
-                        status={index / 2 == 0 ? true : false}
-                        txt={'Book Appointment'}
-                        onClick={() => {
-                          if (index / 2 == 0) {
-                            navigation.navigate('BookAppointment');
-                          }
-                        }}
-                      />
-                    </View>
-                  );
-                }}
-              /> */}
+            <View style={[styles.section]}>
+              <Text style={[headings.h1, styles.heading]}>
+                Top Rated Doctors
+              </Text>
+              <View style={{alignItems: 'center'}}>
+                <DoctorsList navigation={navigation} />
+              </View>
             </View>
           </View>
         </ScrollView>
@@ -120,18 +132,25 @@ const styles = ScaledSheet.create({
     marginTop: '20@s',
   },
   banner: {
-    width: width - 0.7,
+    width: '100%',
     height: '150@s',
-    resizeMode: 'contain',
-    borderRadius: 10,
+    resizeMode: 'cover',
+    borderRadius: '10@s',
     alignSelf: 'center',
-    marginTop: 10,
+    marginTop: '7@s',
   },
   heading: {
     color: '#000',
-    fontSize: '17@s',
-    fontWeight: '700',
-    marginLeft: 15,
+    marginLeft: '13@s',
+    marginVertical: '10@s',
+  },
+  SlideHeading: {
+    color: '#fff',
+    marginBottom: '5@s',
+  },
+  SlideBody: {
+    color: '#fff',
+    // marginVertical: '10@s',
   },
   linearGradient: {
     width: 120,

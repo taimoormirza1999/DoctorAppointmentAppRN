@@ -137,7 +137,9 @@ const DoctorsDetails = ({navigation}) => {
                       {Array(5)
                         .fill(null)
                         .map((_, index) => (
-                          <StarSVG />
+                         <View style={{marginLeft:scale(3)}}>
+                           <StarSVG />
+                          </View>
                         ))}
                     </View>
                   </View>
@@ -205,7 +207,7 @@ const styles = ScaledSheet.create({
     backgroundColor: gray100,
     padding: '12@s',
     borderRadius: '50@s',
-    marginBottom: '7@s',
+    marginBottom: '10@s',
   },
   tabBarStyle: {
     flexDirection: 'row',
