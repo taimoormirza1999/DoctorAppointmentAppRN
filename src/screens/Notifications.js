@@ -3,10 +3,11 @@ import React from 'react';
 import SafeAreaWrapper from '../constants/SafeAreaWrapper';
 import DoctorsList from '../components/DoctorsList';
 import CustomBottomTab from '../components/CustomBottomTab';
-import {ScaledSheet} from 'react-native-size-matters';
+import {scale, ScaledSheet} from 'react-native-size-matters';
 import {width} from '../constants/DimensionFontSizes';
 import HeaderTitle from '../components/HeaderTitle';
 import { headingCommonStyle, headings, sectionSeprator } from '../constants/commonStyles';
+import NotificationList from '../components/NotificationList';
 
 const Notifications = ({navigation}) => {
   return (
@@ -17,11 +18,9 @@ const Notifications = ({navigation}) => {
           showsVerticalScrollIndicator={false}>
           <View style={styles.containe}>
             <HeaderTitle title="Notification" navigation={navigation}/>
-            <Text style={[headings.h1,headingCommonStyle, sectionSeprator]}>
-              Top Rated Doctors
-            </Text>
-            <View style={{marginTop: 0, alignItems: 'center',}}>
-              <DoctorsList navigation={navigation} type='horizontal'/>
+           
+            <View style={{marginTop: scale(15), alignItems: 'center',}}>
+              <NotificationList navigation={navigation} type='horizontal'/>
               <View style={{flexDirection: 'row', width: '100%'}}></View>
             </View>
           </View>

@@ -48,9 +48,10 @@ export const headings = {
     fontFamily:'Inter_18pt-Bold',
   },
   h3: {
-    fontSize: '12.5@s',
-    fontWeight: '800',
-    lineHeight: '145%',
+    fontSize: scale(12.5),
+    fontWeight: '600',
+    lineHeight: scale(15),
+    fontFamily:'Inter_18pt-Medium',
   },
 };
 export const body = {

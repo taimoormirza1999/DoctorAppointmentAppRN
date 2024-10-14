@@ -32,7 +32,11 @@
 		<true/>
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
+<string>We need your location to show you nearby services.</string>
+<key>NSLocationAlwaysUsageDescription</key>
+<string>We need your location to provide personalized services.</string>
+<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+<string>This app needs access to your location when using the app and in the background.</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>AntDesign.ttf</string>

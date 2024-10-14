@@ -38,7 +38,7 @@ export default DoctorCardHorizontal;
 
 const styles = ScaledSheet.create({
   docItem: {
-    width: '97s%',
+    width: '95%',
     flexDirection:'row',
     paddingHorizontal: '2.5%',
     backgroundColor: '#fff',
@@ -74,14 +74,14 @@ const styles = ScaledSheet.create({
   },
 
   docCat: {
-    fontSize: '13@s',
+    fontSize: '12.5@s',
     marginVertical: '5@s',
     fontWeight: '600',
     color: gray600,
   },
   text: {
     width: '100%',
-    fontSize: '11.5@s',
+    fontSize: '10.5@s',
     marginLeft:'4@s',
     fontWeight: '600',
     color: gray500,

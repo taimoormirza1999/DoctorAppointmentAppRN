@@ -1,45 +1,11 @@
-import { StyleSheet, Text, View,FlatList } from 'react-native'
+import { StyleSheet, View,FlatList } from 'react-native'
 import React from 'react'
 import { DoctorsImages } from '../constants/DoctorsImages';
-// import { FlatList } from 'react-native-gesture-handler';
 import DoctorCardVertical from './DoctorCardVertical';
 import DoctorCardHorizontal from './DoctorCardHorizontal';
 
-const DoctorsList = ({navigation}) => {
-    const doctorsData = [
-        {
-          image: DoctorsImages.doctor7,
-          rating: "5",
-          reviews: "1,872",
-          doctorName: "Dr. David Patel",
-          category: "Cardiologist",
-          location: "Cardiology Center, USA",
-        },
-        {
-          image: DoctorsImages.doctor5,
-          rating: "4.9",
-          reviews: "127",
-          doctorName: "Dr. Jessica Turner",
-          category: "Gynecologist",
-          location: "Women's Clinic, Seattle, USA",
-        },
-        {
-          image: DoctorsImages.doctor3,
-          rating: "5",
-          reviews: "5,223",
-          doctorName: "Dr. Michael Johnson",
-          category: "Orthopedic Surgery",
-          location: "Maple Associates, NY, USA",
-        },
-        {
-          image: DoctorsImages.doctor4,
-          rating: "4.6",
-          reviews: "405",
-          doctorName: "Dr. Emily Walker",
-          category: "Pediatrics",
-          location: "Serenity Pediatrics Clinic, USA",
-        },
-      ];
+const DoctorsList = ({doctorsData,navigation, type="vertical"}) => {
+    
       const handleAction=()=>{
         navigation.navigate("DoctorsDetails",)
       }
@@ -50,6 +16,7 @@ const DoctorsList = ({navigation}) => {
       
       keyExtractor={(item, index) => index.toString()} // Unique key for each item
       renderItem={({ item }) => (
+        type=="vertical"?
         <DoctorCardVertical
           image={item.image}
           rating={item.rating}
@@ -58,20 +25,18 @@ const DoctorsList = ({navigation}) => {
           category={item.category}
           location={item.location}
           handleAction={handleAction}
-        />
-        // <DoctorCardHorizontal
-        //   image={item.image}
-        //   rating={item.rating}
-        //   reviews={item.reviews}
-        //   doctorName={item.doctorName}
-        //   category={item.category}
-        //   location={item.location}
-        //   handleAction={handleAction}
-        // />
-        // <Text>GG</Text>
-    
+        />:
+        <DoctorCardHorizontal
+          image={item.image}
+          rating={item.rating}
+          reviews={item.reviews}
+          doctorName={item.doctorName}
+          category={item.category}
+          location={item.location}
+          handleAction={handleAction}
+        />    
       )}
-      numColumns={2}
+      numColumns={ type=="vertical"?2:1}
       ListFooterComponent={()=>{
         return <View style={{height:70}}></View> 
       }}
@@ -82,4 +47,3 @@ const DoctorsList = ({navigation}) => {
 
 export default DoctorsList
 
-const styles = StyleSheet.create({})

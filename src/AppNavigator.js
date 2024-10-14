@@ -11,13 +11,14 @@ import OnBoarding from './screens/OnBoarding';
 import Completed from './screens/Completed';
 import CallAmb from './screens/CallAmb';
 import AllDoctors from './screens/AllDoctors';
-import SafeAreaWrapper from './constants/SafeAreaWrapper';
 import DoctorsDetails from './screens/DoctorsDetails';
+import MyAppointments from './screens/MyAppointments';
+import Notifications from './screens/Notifications';
 const Stack = createNativeStackNavigator();
 const AppNavigator = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Splash">
+      <Stack.Navigator initialRouteName="Home">
         <Stack.Screen
           component={Splash}
           name="Splash"
@@ -31,17 +32,26 @@ const AppNavigator = () => {
         <Stack.Screen
           component={DoctorsDetails}
           name="DoctorsDetails"
-          options={{headerShown: false, animation: 'slide_from_bottom'}}
+          options={{
+            headerShown: false,
+            animation: 'slide_from_bottom',
+          }}
         />
         <Stack.Screen
-          component={SafeAreaWrapper}
-          name="SafeAreaWrapper"
+          component={MyAppointments}
+          name="MyAppointments"
           options={{headerShown: false}}
         />
         <Stack.Screen
           component={OnBoarding}
           name="OnBoarding"
           options={{headerShown: false}}
+        />
+        <Stack.Screen
+          component={Notifications}
+          name="Notifications"
+          options={{headerShown: false, animation: 'slide_from_bottom',
+            presentation: 'modal',}}
         />
         <Stack.Screen
           component={Home}
@@ -51,12 +61,16 @@ const AppNavigator = () => {
         <Stack.Screen
           component={BookAppointment}
           name="BookAppointment"
-          options={{headerShown: false,}}
+          options={{headerShown: false}}
         />
         <Stack.Screen
           component={Success}
           name="Success"
-          options={{headerShown: false, animation:'slide_from_bottom'}}
+          options={{
+            headerShown: false,
+            animation: 'slide_from_bottom',
+            presentation: 'modal',
+          }}
         />
         <Stack.Screen
           component={Pending}

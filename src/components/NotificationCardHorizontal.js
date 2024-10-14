@@ -4,31 +4,54 @@ import {lightShadow, mediumShadow} from '../constants/Shadows';
 import {scale, ScaledSheet} from 'react-native-size-matters';
 import {width} from '../constants/DimensionFontSizes';
 import {gray500, gray600, gray800} from '../constants/Colors';
-
+import {AlignSelf, justRow, w100} from '../constants/commonStyles';
+import Icon from 'react-native-vector-icons/AntDesign';
 import LocationSVG from '../svgs/LocationSVG';
 import FastImage from 'react-native-fast-image';
+import CalendarTickSVG from '../svgs/CalendarTickSVG';
+import CalendarCancelSVG from '../svgs/CalendarCancelSVG';
+import CalendarEditSVG from '../svgs/CalendarEditSVG';
 
-const NotificationCardHorizontal = ({extraval1, image, ratting, doctorName, category,location, reviews,handleAction}) => {
+const NotificationCardHorizontal = ({
+  status,
+  title,
+  time,
+  description,
+  handleAction,
+}) => {
   return (
-    <TouchableOpacity onPress={handleAction} style={[styles.docItem, mediumShadow]}>
-    <View style={styles.ImageSide}>
-    <FastImage
-        source={image}
-        style={[styles.docImg, lightShadow]}
-        resizeMode={FastImage.resizeMode.cover}
-      />
-    </View>
-   <View style={styles.TextSide}>
-   <Text style={styles.docName}>{doctorName}</Text>
-      <Text style={styles.docCat}>{category}</Text>
-      <View style={[{flexDirection: 'row'}, styles.locationView]}>
-      
-        <LocationSVG width={scale(17)} height={scale(17)} strokeWidth={1.8} />
-         {/* <Icon name="rocket" size={30} color="#900" /> */}
-        <Text style={styles.text}>{location}</Text>
+    <TouchableOpacity
+      onPress={handleAction}
+      style={[styles.docItem]}>
+      <View style={styles.ImageSide}>
+        {
+          status=='tick' ?  <CalendarTickSVG
+          width={scale(50)}
+          height={scale(50)}
+          strokeWidth={1.8}
+        /> :
+        status=='cancelled' ?
+        <CalendarCancelSVG 
+         width={scale(50)}
+        height={scale(50)}
+        strokeWidth={1.8}/>
+        :
+        <CalendarEditSVG  width={scale(50)}
+        height={scale(50)}
+        strokeWidth={1.8}/>
+        }
+       
       </View>
-   
-   </View>
+      <View style={[styles.TextSide, ]}>
+        <View style={[justRow,w100,{justifyContent: 'space-between',flex:1}]}>
+          <Text style={styles.docName}>{title}</Text>
+          <Text style={styles.docCat}>{time}</Text>
+        </View>
+
+        <Text style={styles.text}>
+         {description}
+        </Text>
+      </View>
     </TouchableOpacity>
   );
 };
@@ -38,34 +61,27 @@ export default NotificationCardHorizontal;
 const styles = ScaledSheet.create({
   docItem: {
     width: '95%',
-    flexDirection:'row',
+    flexDirection: 'row',
     paddingHorizontal: '2.5%',
     backgroundColor: '#fff',
-    borderRadius: '13@s',
+    borderRadius: '10@s',
     // borderWidth: 0.2,
-    margin: '10@s',
-    paddingVertical: '8@s',
+    marginHorizontal: '10@s',
+    marginVertical:'5@s',
+    paddingVertical: '10@s',
+    paddingHorizontal: '7@s',
   },
   ImageSide: {
-    width: '35%',
+    width: '20%',
   },
   TextSide: {
     justifyContent: 'center',
-    width: '50%',
+    width: '80%',
     paddingLeft: '3%',
   },
-  docImg: {
-    width: '100%',
-    height: width * 0.26,
-    borderRadius: '7@s',
-  },
-  Icon: {
-    width:  '12@s',
-    height: '12@s',
-   resizeMode:'contain'
-  },
+
   docName: {
-    fontSize: '14@s',
+    fontSize: '13.5@s',
     fontWeight: '700',
     marginTop: '5@s',
     marginBottom: '5@s',
@@ -73,20 +89,14 @@ const styles = ScaledSheet.create({
   },
 
   docCat: {
-    fontSize: '12.5@s',
+    fontSize: '11.5@s',
     marginVertical: '5@s',
-    fontWeight: '600',
     color: gray600,
   },
   text: {
     width: '100%',
-    fontSize: '10.5@s',
-    marginLeft:'4@s',
-    fontWeight: '600',
+    fontSize: '12@s',
     color: gray500,
-  },
-  locationView:{
-     marginVertical: '4@s',
   },
 
 });

@@ -1,4 +1,4 @@
-import {Image, StyleSheet, Text, View} from 'react-native';
+import {FlatList, Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import React from 'react';
 import {ScaledSheet} from 'react-native-size-matters';
 import {gray600} from '../constants/Colors';
@@ -12,19 +12,25 @@ import BrainSVG from '../svgs/BrainSVG';
 import StomachSVG from '../svgs/StomachSVG';
 import LabSVG from '../svgs/LabSVG';
 import VacineSVG from '../svgs/VacineSVG';
+import { categories } from '../constants/data';
 // import { TeethSvg2 } from '../svgs/TeethSVg'
 // import TeethSvg2 from './Test'
 // import TeethSvg from '../svgs/TeethSVg'
 
-const CardItem = ({text, children}) => {
+const CardItem = ({text, children, navigation}) => {
+
   return (
-    <View style={styles.cardItem}>
+    <TouchableOpacity
+      onPress={() => {
+        navigation.navigate('AllDoctors', {pageTitle: text});
+      }}
+      style={styles.cardItem}>
       {children}
-      <Text style={styles.cardText}>{text}</Text>
-    </View>
+      <Text style={styles.cardText}>{text.length>9?text.substring(0,9)+"..":text}</Text>
+    </TouchableOpacity>
   );
 };
-const Categories = () => {
+const Categories = ({navigation}) => {
   const svgsCategories = {
     teeth: <TeethSVG />,
     heart: <HeartSVG />,
@@ -35,16 +41,20 @@ const Categories = () => {
     lab: <LabSVG />,
     vacine: <VacineSVG />,
   };
+
   return (
     <View style={styles.container}>
-      <CardItem text="Dentistry">{svgsCategories.teeth}</CardItem>
-      <CardItem text="Cardiolo..">{svgsCategories.heart}</CardItem>
-      <CardItem text="Pulmono..">{svgsCategories.lungs}</CardItem>
-      <CardItem text="General">{svgsCategories.general}</CardItem>
-      <CardItem text="Neurology">{svgsCategories.brain}</CardItem>
-      <CardItem text="Gastroen..">{svgsCategories.stomach}</CardItem>
-      <CardItem text="Laborato..">{svgsCategories.lab}</CardItem>
-      <CardItem text="Vaccinat..">{svgsCategories.vacine}</CardItem>
+      <FlatList
+  data={categories(svgsCategories)}
+  key={4}
+  keyExtractor={(item, index) => index.toString()}
+  renderItem={({ item }) => (
+    <CardItem navigation={navigation} text={item.text}>
+      {item.icon}
+    </CardItem>
+  )}
+  numColumns={4}
+/>
     </View>
   );
 };

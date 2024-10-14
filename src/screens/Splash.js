@@ -1,11 +1,14 @@
-import {View, Text, StyleSheet, StatusBar} from 'react-native';
-import React, {useEffect} from 'react';
+import {View, Text, StyleSheet, StatusBar, Alert} from 'react-native';
+import React, {useEffect, useState} from 'react';
 import SplashCardRow from '../components/Splash/SplashCardRow';
 import {TestingHighLighter} from '../constants/commonStyles';
 import {height, width} from '../constants/DimensionFontSizes';
 import FastImage from 'react-native-fast-image';
+import { check, request, PERMISSIONS, RESULTS } from 'react-native-permissions';
+import Geolocation from '@react-native-community/geolocation';
 
 // bigImage2==null
+
 
 const splashData = [
   {
@@ -25,7 +28,52 @@ const splashData = [
   },
 ];
 const Splash = ({navigation}) => {
+  const [location, setLocation] = useState(null);
+
+  // Function to request location permission
+  const requestLocationPermission = async () => {
+    if (Platform.OS === 'android') {
+      try {
+        const granted = await PermissionsAndroid.request(
+          PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
+          {
+            title: 'Location Permission',
+            message: 'This app needs access to your location.',
+            buttonNeutral: 'Ask Me Later',
+            buttonNegative: 'Cancel',
+            buttonPositive: 'OK',
+          }
+        );
+        if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+          console.log('Location permission granted');
+          getCurrentLocation();
+        } else {
+          console.log('Location permission denied');
+        }
+      } catch (err) {
+        console.warn(err);
+      }
+    } else {
+      getCurrentLocation();
+    }
+  };
+
+  // Function to get the current location
+  const getCurrentLocation = () => {
+    Geolocation.getCurrentPosition(
+      (position) => {
+        const { latitude, longitude } = position.coords;
+        setLocation({ latitude, longitude });
+      },
+      (error) => {
+        console.log(error.code, error.message);
+        Alert.alert('Error', 'Failed to get location');
+      },
+      { enableHighAccuracy: true, timeout: 15000, maximumAge: 10000 }
+    );
+  };
   useEffect(() => {
+    // requestLocationPermission();
     setTimeout(() => {
       navigation.navigate('OnBoarding');
     }, 3000);

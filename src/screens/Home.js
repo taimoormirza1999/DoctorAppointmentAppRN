@@ -20,9 +20,9 @@ import LocationSVG from '../svgs/LocationSVG';
 import NotificationSVG from '../svgs/NotificationSVG';
 import {gray100, gray600} from '../constants/Colors';
 import {lightShadow} from '../constants/Shadows';
-import {SliderData} from '../constants/data';
+import {AllDoctorsData, SliderData} from '../constants/data';
 import FastImage from 'react-native-fast-image';
-const HeaderHome = () => {
+const HeaderHome = ({navigation}) => {
   return (
     <View style={{paddingVertical: scale(10), marginHorizontal: scale(7)}}>
       <Text style={[[[body.bodyXSRegular, {marginBottom: scale(5)}]]]}>
@@ -37,6 +37,9 @@ const HeaderHome = () => {
         </View>
       </View>
       <TouchableOpacity
+      onPress={()=>{
+        navigation.navigate('Notifications');
+      }}
         style={[
           absolutePosWValue('right', scale(10)),
           lightShadow,
@@ -75,7 +78,7 @@ const Home = ({navigation}) => {
           showsVerticalScrollIndicator={false}>
           <View style={styles.containe}>
             {/* header */}
-            <HeaderHome />
+            <HeaderHome navigation={navigation}/>
             <View style={{borderRadius: 10, marginHorizontal: scale(10)}}>
               <FastImage
                 source={SliderData.image}
@@ -106,14 +109,14 @@ const Home = ({navigation}) => {
 
             <View style={styles.section}>
               <Text style={[headings.h1, styles.heading]}>Categories</Text>
-              <Categories />
+              <Categories navigation={navigation} />
             </View>
             <View style={[styles.section]}>
               <Text style={[headings.h1, styles.heading]}>
                 Top Rated Doctors
               </Text>
               <View style={{alignItems: 'center'}}>
-                <DoctorsList navigation={navigation} />
+                <DoctorsList navigation={navigation} doctorsData={AllDoctorsData} />
               </View>
             </View>
           </View>

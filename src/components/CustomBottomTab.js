@@ -23,10 +23,6 @@ const ItemCompo = ({children, image, text, active, handlerAction}) => {
           borderRadius: 50,
         }}>
         {children}
-        {/* <Image
-          source={image}
-          style={[styles.bottomIcon, {tintColor: !active ? gray400 : gray600}]}
-        /> */}
       </View>
 
       <Text style={styles.bottomText}>{text}</Text>
@@ -34,18 +30,11 @@ const ItemCompo = ({children, image, text, active, handlerAction}) => {
   );
 };
 const CustomBottomTab = ({activeTab, title, image, navigation}) => {
-  // const svgs = {
-  //   home: <HomeSVG />,
-  //   appointment: <AppointmentSVG />,
-  //   doctors: <DoctorSVG />,
-  //   notification: <NotificationSVG />,
-  //   profile: <ProfileSVG />,
-  // };
   const handlers = {
     home: () => navigation.navigate('Home'),
-    appointment: () => navigation.navigate('Home'),
+    appointment: () => navigation.navigate('MyAppointments'),
     doctors: () => navigation.navigate('AllDoctors'),
-    notification: () => navigation.navigate('Home'),
+    notification: () => navigation.navigate('Notifications'),
     profile: () => navigation.navigate('Home'),
   };
 
@@ -59,9 +48,9 @@ const CustomBottomTab = ({activeTab, title, image, navigation}) => {
       </ItemCompo>
       <ItemCompo
         text="Appointments"
-        active={activeTab == 'dppointments'}
+        active={activeTab == 'appointments'}
         handlerAction={handlers.appointment}>
-        {<AppointmentSVG stroke={activeTab == 'dppointments'?gray600:gray400}/>}
+        {<AppointmentSVG stroke={activeTab == 'appointments'?gray600:gray400}/>}
       </ItemCompo>
       <ItemCompo
         text="Doctors"
@@ -97,7 +86,7 @@ const styles = ScaledSheet.create({
 
   bottomView: {
     width: '100%',
-    height: '50@s',
+    height: '55@s',
     borderTopRightRadius: '10@s',
     borderTopLeftRadius: '10@s',
     elevation: 5,
@@ -112,8 +101,8 @@ const styles = ScaledSheet.create({
     justifyContent: 'space-evenly',
   },
   bottomIcon: {
-    width: '20@s',
-    height: '20@s',
+    width: '18@s',
+    height: '18@s',
     resizeMode: 'contain',
   },
   bottomText: {
