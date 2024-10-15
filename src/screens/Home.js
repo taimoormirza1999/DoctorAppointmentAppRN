@@ -41,7 +41,7 @@ const HeaderHome = ({navigation}) => {
 
   return (
     <View style={{paddingVertical: scale(10), marginHorizontal: scale(7)}}>
-      <Text style={[[[body.bodyXSRegular, {marginBottom: scale(5)}]]]}>
+      <Text style={[[[body.bodyXSRegular, {marginBottom: scale(5), fontWeight:'700'}]]]}>
         Location
       </Text>
       <View style={[justRow, w100]}>
@@ -49,7 +49,7 @@ const HeaderHome = ({navigation}) => {
         <TouchableOpacity onPress={requestLocationPermission} style={[justRow]}>
           <LocationSVG height={scale(18)} width={scale(18)} />
           <Text style={[[body.bodySSemiBold, {marginLeft: 5}]]}>
-           {address}
+           {address.fullAddress}
           </Text>
         </TouchableOpacity>
       
@@ -97,7 +97,7 @@ const Home = ({navigation}) => {
           <View style={styles.containe}>
             {/* header */}
             <HeaderHome navigation={navigation} />
-            <AnimatedWrapper
+            <View
               style={{borderRadius: 10, marginHorizontal: scale(10)}}>
               <FastImage
                 source={SliderData.image}
@@ -132,7 +132,7 @@ const Home = ({navigation}) => {
                   </Text>
                 </View>
               </LinearGradient>
-            </AnimatedWrapper>
+            </View>
 
             <AnimatedWrapper style={styles.section}>
               <Text style={[headings.h1, styles.heading]}>Categories</Text>

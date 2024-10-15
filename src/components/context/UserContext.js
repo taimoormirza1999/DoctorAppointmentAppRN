@@ -8,7 +8,7 @@ export const UserContext = createContext();
 
 // Step 2: Create Provider Component
 export const UserProvider = ({ children }) => {
-    const [address, setAddress] = useState('');
+    const [address, setAddress] = useState({});
     const getGeocodeData = async (latitude, longitude) => {
       const apiKey = 'AIzaSyD9mUVWyCGKxCDgdDuoYImTzQz28KCU_js';
       const url = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=${apiKey}`;
@@ -34,9 +34,13 @@ export const UserProvider = ({ children }) => {
           });
   
           const fullAddress = `${city}, ${country}`;
-          console.log(`City: ${city}, Country: ${country}`);
-          setAddress(fullAddress);  // Update address state
-  
+          setAddress({
+            longitude:longitude,
+            latitude:latitude,
+            fullAddress:fullAddress
+          });  
+            // console.log(`City: ${city}, Country: ${country}`);
+
         } else {
           console.error('Error in the Geocoding response:', data.status);
         }
@@ -77,9 +81,7 @@ export const UserProvider = ({ children }) => {
        
         requestLocationPermission();
       }, []);
-const test=()=>{
-    alert("DFf")
-}
+
     return (
       // Step 3: Provide the username state to child components
       <UserContext.Provider value={[address, setAddress,requestLocationPermission]}>

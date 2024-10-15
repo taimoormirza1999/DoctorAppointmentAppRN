@@ -37,7 +37,7 @@ const Success = ({navigation, route}) => {
           <Button
             text={'Done'}
             handleNext={() => {
-              navigation.navigate('Home');
+              navigation.navigate('MyAppointments');
             }}
           />
         </View>

@@ -12,6 +12,7 @@ import Animated, {
 } from 'react-native-reanimated';
 import NotificationSVG from '../svgs/NotificationSVG';
 import { gray600 } from '../constants/Colors';
+import { scale } from 'react-native-size-matters';
 
 
 const { width } = Dimensions.get('window');
@@ -86,7 +87,7 @@ const NotificationBell = () => {
     <View>
       {/* Apply the animated style to the bell icon */}
       <Animated.View style={animatedStyle}>
-        <NotificationSVG fill={gray600} />
+        <NotificationSVG fill={gray600} width={scale(21)} height={scale(21)}/>
       </Animated.View>
     </View>
   );
