@@ -106,8 +106,9 @@ const styles = ScaledSheet.create({
     resizeMode: 'contain',
   },
   bottomText: {
-    fontSize: '9@s',
-    fontWeight: 600,
+    fontSize: '8.7@s',
+    fontWeight: 900,
     color: gray400,
+    fontFamily:'Inter_18pt-Medium',
   },
 });

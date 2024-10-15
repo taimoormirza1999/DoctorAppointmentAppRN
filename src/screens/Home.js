@@ -1,5 +1,5 @@
 import {View, Text, ScrollView, TouchableOpacity} from 'react-native';
-import React from 'react';
+import React, { useContext } from 'react';
 import SafeAreaWrapper from '../constants/SafeAreaWrapper';
 import CustomBottomTab from '../components/CustomBottomTab';
 import {scale, ScaledSheet} from 'react-native-size-matters';
@@ -20,26 +20,44 @@ import LocationSVG from '../svgs/LocationSVG';
 import NotificationSVG from '../svgs/NotificationSVG';
 import {gray100, gray600} from '../constants/Colors';
 import {lightShadow} from '../constants/Shadows';
-import {AllDoctorsData, SliderData} from '../constants/data';
+import {
+  AllDoctorsData,
+  AllHospitalsData,
+  CardiologyDoctors,
+  GeneralDoctors,
+  NeurologyDoctors,
+  SliderData,
+} from '../constants/data';
 import FastImage from 'react-native-fast-image';
+import {AnimatedWrapper} from '../constants/AnimationEntering';
+import NotificationBell from '../components/NotificationBell';
+import HospitalList from '../components/HospitalList';
+import LinearGradient from 'react-native-linear-gradient';
+import Test from '../components/AddressWrapper';
+import AddressWrapper from '../components/AddressWrapper';
+import { UserContext } from '../components/context/UserContext';
 const HeaderHome = ({navigation}) => {
+  const [address,, requestLocationPermission] = useContext(UserContext);
+
   return (
     <View style={{paddingVertical: scale(10), marginHorizontal: scale(7)}}>
       <Text style={[[[body.bodyXSRegular, {marginBottom: scale(5)}]]]}>
         Location
       </Text>
       <View style={[justRow, w100]}>
-        <View style={[justRow]}>
+        
+        <TouchableOpacity onPress={requestLocationPermission} style={[justRow]}>
           <LocationSVG height={scale(18)} width={scale(18)} />
           <Text style={[[body.bodySSemiBold, {marginLeft: 5}]]}>
-            New York, USA
+           {address}
           </Text>
-        </View>
+        </TouchableOpacity>
+      
       </View>
       <TouchableOpacity
-      onPress={()=>{
-        navigation.navigate('Notifications');
-      }}
+        onPress={() => {
+          navigation.navigate('Notifications');
+        }}
         style={[
           absolutePosWValue('right', scale(10)),
           lightShadow,
@@ -51,7 +69,7 @@ const HeaderHome = ({navigation}) => {
           },
         ]}>
         <View style={[relative]}>
-          <NotificationSVG fill={gray600} />
+          <NotificationBell />
           <View
             style={[
               absolute,
@@ -78,19 +96,28 @@ const Home = ({navigation}) => {
           showsVerticalScrollIndicator={false}>
           <View style={styles.containe}>
             {/* header */}
-            <HeaderHome navigation={navigation}/>
-            <View style={{borderRadius: 10, marginHorizontal: scale(10)}}>
+            <HeaderHome navigation={navigation} />
+            <AnimatedWrapper
+              style={{borderRadius: 10, marginHorizontal: scale(10)}}>
               <FastImage
                 source={SliderData.image}
                 style={[styles.banner]}
                 resizeMode={FastImage.resizeMode.cover}
               />
-              <View
+              <LinearGradient
+                start={{x: 0, y: 0}}
+                end={{x: 1, y: 0}}
+                colors={[
+                  'rgba(81,147,139,0.9)',
+                  'rgba(81,147,139,0.15)',
+                  'rgba(81,147,139,0.1)',
+                ]}
                 style={[
                   absolute,
                   {
-                    backgroundColor: 'rgba(0,0,0,0.18)',
-                    height: '93%',
+                    flex: 1,
+                    // backgroundColor: 'rgba(0,0,0,1',
+                    height: '95%',
                     width: '100%',
                     marginTop: scale(7),
                     borderRadius: scale(10),
@@ -104,21 +131,64 @@ const Home = ({navigation}) => {
                     {SliderData.description}
                   </Text>
                 </View>
-              </View>
-            </View>
+              </LinearGradient>
+            </AnimatedWrapper>
 
-            <View style={styles.section}>
+            <AnimatedWrapper style={styles.section}>
               <Text style={[headings.h1, styles.heading]}>Categories</Text>
               <Categories navigation={navigation} />
-            </View>
+            </AnimatedWrapper>
             <View style={[styles.section]}>
               <Text style={[headings.h1, styles.heading]}>
                 Top Rated Doctors
               </Text>
               <View style={{alignItems: 'center'}}>
-                <DoctorsList navigation={navigation} doctorsData={AllDoctorsData} />
+                <DoctorsList
+                  navigation={navigation}
+                  doctorsData={AllDoctorsData}
+                  limit={8}
+                  start={4}
+                />
               </View>
             </View>
+            <View style={[{marginTop: scale(-35)}]}>
+              <Text style={[headings.h1, styles.heading]}>Hospitals</Text>
+              <View style={{}}>
+                <HospitalList
+                  navigation={navigation}
+                  doctorsData={AllHospitalsData}
+                />
+              </View>
+            </View>
+            {/* Neurologist */}
+            <View style={[styles.section]}>
+              <Text style={[headings.h1, styles.heading]}>
+                Top Neurologist Doctors
+              </Text>
+              <View style={{alignItems: 'center'}}>
+                <DoctorsList
+                  navigation={navigation}
+                  doctorsData={NeurologyDoctors}
+                  limit={2}
+                  bottomHeight={5}
+                />
+              </View>
+            </View>
+            {/* <Test/> */}
+            {/*  Health Care */}
+            <View style={[styles.section]}>
+              <Text style={[headings.h1, styles.heading]}>
+                Top Health Care Doctors
+              </Text>
+              <View style={{alignItems: 'center'}}>
+                <DoctorsList
+                  navigation={navigation}
+                  doctorsData={GeneralDoctors}
+                  limit={4}
+                />
+              </View>
+            </View>
+     
           </View>
         </ScrollView>
         <CustomBottomTab activeTab={'home'} navigation={navigation} />
@@ -149,7 +219,7 @@ const styles = ScaledSheet.create({
   heading: {
     color: '#000',
     marginLeft: '13@s',
-    marginVertical: '10@s',
+    marginVertical: '7@s',
   },
   SlideHeading: {
     color: '#fff',

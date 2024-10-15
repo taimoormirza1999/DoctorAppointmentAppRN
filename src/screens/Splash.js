@@ -1,11 +1,12 @@
 import {View, Text, StyleSheet, StatusBar, Alert} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import SplashCardRow from '../components/Splash/SplashCardRow';
-import {TestingHighLighter} from '../constants/commonStyles';
+import {relative, TestingHighLighter} from '../constants/commonStyles';
 import {height, width} from '../constants/DimensionFontSizes';
 import FastImage from 'react-native-fast-image';
 import { check, request, PERMISSIONS, RESULTS } from 'react-native-permissions';
 import Geolocation from '@react-native-community/geolocation';
+import { AnimatedWrapper } from '../constants/AnimationEntering';
 
 // bigImage2==null
 
@@ -103,7 +104,9 @@ const Splash = ({navigation}) => {
           justifyContent: 'center',
           alignItems: 'center',
         }}>
-        <FastImage
+
+         <AnimatedWrapper style={[relative,{height:height, width:width, flex:1}]}>
+          <FastImage
           source={require('../images/mlogo.png')}
           resizeMode={FastImage.resizeMode.contain}
           style={{
@@ -112,8 +115,12 @@ const Splash = ({navigation}) => {
             zIndex: 999999999,
             position: 'absolute',
             top: height * 0.43,
+            left:'50%',
+            transform: [{ translateX: -width * 0.15 }],
           }}
         />
+          </AnimatedWrapper>
+      
       </View>
     </View>
   );

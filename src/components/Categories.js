@@ -3,7 +3,7 @@ import React from 'react';
 import {ScaledSheet} from 'react-native-size-matters';
 import {gray600} from '../constants/Colors';
 import {mediumShadow} from '../constants/Shadows';
-import Test from './Test';
+import Test from './AddressWrapper';
 import TeethSVG from '../svgs/TeethSVG';
 import HeartSVG from '../svgs/HeartSVG';
 import LungsSVG from '../svgs/LungsSVG';

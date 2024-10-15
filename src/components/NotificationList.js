@@ -5,6 +5,7 @@ import DoctorCardVertical from './DoctorCardVertical';
 import DoctorCardHorizontal from './DoctorCardHorizontal';
 import NotificationCardHorizontal from './NotificationCardHorizontal';
 import { scale } from 'react-native-size-matters';
+import { AnimatedWrapper } from '../constants/AnimationEntering';
 
 const NotificationList = ({navigation, type = 'vertical'}) => {
   const notificationData1 = [
@@ -44,7 +45,7 @@ const NotificationList = ({navigation, type = 'vertical'}) => {
     navigation.navigate('DoctorsDetails');
   };
   return (
-    <View style={{}}>
+    <AnimatedWrapper style={{}}>
       <Text> TODAY</Text>
       <FlatList
         data={notificationData1}
@@ -81,7 +82,7 @@ const NotificationList = ({navigation, type = 'vertical'}) => {
           return <View style={{height: scale(120)}}></View>;
         }}
       />
-    </View>
+    </AnimatedWrapper>
   );
 };
 

@@ -51,8 +51,9 @@ const styles = ScaledSheet.create({
     width: '35%',
   },
   TextSide: {
+    // backgroundColor:'red',
     justifyContent: 'center',
-    width: '50%',
+    width: '65%',
     paddingLeft: '3%',
   },
   docImg: {
@@ -66,6 +67,7 @@ const styles = ScaledSheet.create({
    resizeMode:'contain'
   },
   docName: {
+    width:'100%',
     fontSize: '14@s',
     fontWeight: '700',
     marginTop: '5@s',

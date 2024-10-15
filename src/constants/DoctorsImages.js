@@ -21,3 +21,10 @@ export const DoctorsImages = {
   doctor20: require('../images/main/Doctor20.png'),
   doctor21: require('../images/main/Doctor21.png'),
 };
+
+export const HospitalImages = {
+    hospital1: require('../images/main/Hospital1.png'),
+    hospital2: require('../images/main/Hospital2.png'),
+    hospital3: require('../images/main/Hospital3.png'),
+  };
+  

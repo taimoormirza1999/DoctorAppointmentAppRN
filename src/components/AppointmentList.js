@@ -5,6 +5,7 @@ import { DoctorsImages } from '../constants/DoctorsImages';
 import DoctorCardVertical from './DoctorCardVertical';
 import DoctorCardHorizontal from './DoctorCardHorizontal';
 import AppointmentCardHorizontal from './AppointmentCardHorizontal';
+import { AnimatedWrapper } from '../constants/AnimationEntering';
 
 const AppointmentList = ({navigation}) => {
     const doctorsData = [
@@ -45,7 +46,7 @@ const AppointmentList = ({navigation}) => {
         navigation.navigate("DoctorsDetails",)
       }
   return (
-    <View style={{flexDirection:'row', width:'100%'}}>
+    <AnimatedWrapper style={{flexDirection:'row', width:'100%'}}>
      <FlatList
       data={doctorsData}
       
@@ -77,7 +78,7 @@ const AppointmentList = ({navigation}) => {
         return <View style={{height:70}}></View> 
       }}
     />
-    </View>
+    </AnimatedWrapper>
   )
 }
 

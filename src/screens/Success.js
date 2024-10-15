@@ -1,11 +1,21 @@
 import {View, Text, StyleSheet, Image, TouchableOpacity} from 'react-native';
-import React from 'react';
+import React, {useEffect} from 'react';
 import SuccessSVG from '../svgs/SuccessSVG';
 import Button from '../components/Button';
 import {AlignSelf, body, headings, w70, w80} from '../constants/commonStyles';
 import {scale, ScaledSheet} from 'react-native-size-matters';
 
-const Success = ({navigation}) => {
+const Success = ({navigation, route}) => {
+  const selectedDate = route.params?.selectedDate || null;
+  const formattedDate = null;
+  useEffect(() => {
+    if (route.params?.doctorName) {
+    }
+  }, [route.params?.doctorName]);
+  const formatDate = date => {
+    const options = {day: 'numeric', month: 'short', year: 'numeric'};
+    return new Intl.DateTimeFormat('en-US', options).format(date);
+  };
   return (
     <View style={styles.container}>
       {/* <Image source={require('../images/checked.png')} style={styles.success} /> */}
@@ -17,9 +27,11 @@ const Success = ({navigation}) => {
           {'Congratulations!'}
         </Text>
         <Text style={[styles.textMesage, AlignSelf, body.bodySRegular]}>
-          {
-            'Your appointment with Dr. David Patel is confirmed for Oct 30, 2024, at 10:00 AM.!'
-          }
+          {`Your appointment with ${
+            route.params?.doctorName
+          } is confirmed on ${formatDate(new Date(selectedDate || null))}, at ${
+            route.params?.selectedSlot
+          }!`}
         </Text>
         <View style={[AlignSelf, {width: '100%', alignItems: 'center'}]}>
           <Button

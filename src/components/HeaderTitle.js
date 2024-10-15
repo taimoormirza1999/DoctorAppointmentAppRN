@@ -4,14 +4,30 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import {gray50, gray550} from '../constants/Colors';
 import {ScaledSheet} from 'react-native-size-matters';
 import {iconSizes} from '../constants/DimensionFontSizes';
+import Animated, { FadeInDown, FadeInUp } from "react-native-reanimated";
 
 const HeaderTitle = ({title, icon, navigation}) => {
   const handleBack = () => {
     navigation.goBack();
-    // navigation.navigate('Home');
   };
   return (
-    <View style={styles.header}>
+    <Animated.View
+    entering={FadeInDown.springify()
+      .damping(30)
+      .mass(1)
+      .stiffness(10)
+      .overshootClamping(false)
+      .restDisplacementThreshold(0.1)
+      .restSpeedThreshold(5)}
+    exiting={FadeInUp.springify()
+      .damping(30)
+      .mass(1)
+      .stiffness(10)
+      .overshootClamping(false)
+      .restDisplacementThreshold(0.1)
+      .restSpeedThreshold(5)}
+   
+   style={styles.header}>
       <TouchableOpacity
         style={styles.backBtn}
         underlayColor="#ffffff00"
@@ -20,7 +36,7 @@ const HeaderTitle = ({title, icon, navigation}) => {
       </TouchableOpacity>
 
       <Text style={[styles.title, {marginLeft: 10}]}>{title}</Text>
-    </View>
+    </Animated.View>
   );
 };
 export default HeaderTitle;

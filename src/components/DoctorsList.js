@@ -1,19 +1,18 @@
 import { StyleSheet, View,FlatList } from 'react-native'
 import React from 'react'
-import { DoctorsImages } from '../constants/DoctorsImages';
 import DoctorCardVertical from './DoctorCardVertical';
 import DoctorCardHorizontal from './DoctorCardHorizontal';
+import { AnimatedWrapper } from '../constants/AnimationEntering';
 
-const DoctorsList = ({doctorsData,navigation, type="vertical"}) => {
+const DoctorsList = ({doctorsData,navigation, type="vertical", order, start=0,limit=6,bottomHeight}) => {
     
-      const handleAction=()=>{
-        navigation.navigate("DoctorsDetails",)
+      const handleAction=(selectedDoctor)=>{
+        navigation.navigate("DoctorsDetails",{selectedDoctor:selectedDoctor})
       }
   return (
-    <View style={{flexDirection:'row', width:'100%'}}>
+    <AnimatedWrapper style={{flexDirection:'row', width:'100%'}}>
      <FlatList
-      data={doctorsData}
-      
+      data={order=='reverse'?[...doctorsData].reverse().slice(start, limit):doctorsData.slice(start, limit)}
       keyExtractor={(item, index) => index.toString()} // Unique key for each item
       renderItem={({ item }) => (
         type=="vertical"?
@@ -24,7 +23,7 @@ const DoctorsList = ({doctorsData,navigation, type="vertical"}) => {
           doctorName={item.doctorName}
           category={item.category}
           location={item.location}
-          handleAction={handleAction}
+          handleAction={()=>handleAction(item)}
         />:
         <DoctorCardHorizontal
           image={item.image}
@@ -33,15 +32,15 @@ const DoctorsList = ({doctorsData,navigation, type="vertical"}) => {
           doctorName={item.doctorName}
           category={item.category}
           location={item.location}
-          handleAction={handleAction}
+          handleAction={()=>handleAction(item)}
         />    
       )}
       numColumns={ type=="vertical"?2:1}
       ListFooterComponent={()=>{
-        return <View style={{height:70}}></View> 
+        return <View style={{height:bottomHeight?bottomHeight:70}}></View> 
       }}
     />
-    </View>
+    </AnimatedWrapper>
   )
 }
 

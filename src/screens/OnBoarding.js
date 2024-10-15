@@ -1,52 +1,56 @@
-import { StatusBar, Text, View} from 'react-native';
+import {StatusBar, Text, View} from 'react-native';
 import React, {useRef} from 'react';
 import Onboarding from 'react-native-onboarding-swiper';
 import {width} from '../constants/DimensionFontSizes';
 import Button from '../components/Button';
 import {primaryDarkColor} from '../constants/Colors';
 import {scale, ScaledSheet} from 'react-native-size-matters';
-import { cardShadow, lightShadow, mediumShadow} from '../constants/Shadows'
-import { useNavigation } from '@react-navigation/native';
+import {cardShadow, lightShadow, mediumShadow} from '../constants/Shadows';
+import {useNavigation} from '@react-navigation/native';
 import FastImage from 'react-native-fast-image';
+import { AnimatedWrapper } from '../constants/AnimationEntering';
+import { w100 } from '../constants/commonStyles';
 const DynamicComponent = ({handleNext, title, description, image}) => {
   return (
-    <View style={{}}>
+    <AnimatedWrapper style={{}}>
       <View style={{flex: 0.8}}>
         <FastImage
-  source={image}
-  style={{
-    flex: 1,
-    height: width,
-    width: width,
-  }}
-  resizeMode={FastImage.resizeMode.cover} 
-/>
+          source={image}
+          style={{
+            flex: 1,
+            height: width,
+            width: width,
+          }}
+          resizeMode={FastImage.resizeMode.cover}
+        />
       </View>
       <View style={[styles.bottomCard, cardShadow]}>
+         <AnimatedWrapper style={w100}>
         <Text style={styles.title}>{title}</Text>
-        <Text style={styles.description}>
-          {description}
-        </Text>
+         </AnimatedWrapper>
+         <AnimatedWrapper style={w100}>
+        <Text style={styles.description}>{description}</Text>
+         </AnimatedWrapper>
+        <AnimatedWrapper style={w100}>
         <Button text={'Next'} handleNext={handleNext} />
+        </AnimatedWrapper>
       </View>
-    </View>
+    </AnimatedWrapper>
   );
 };
 
 const OnBoarding = () => {
-    const navigation=useNavigation(true);
+  const navigation = useNavigation(true);
   const onboardingRef = useRef(null);
   const images = {
     Doctor1: require('../images/main/Doctor1.png'),
-    Doctor2: require('../images/main/Doctor5.png'),
-    Doctor3: require('../images/main/Doctor10.png'),
-
+    Doctor2: require('../images/main/Doctor2.png'),
+    Doctor3: require('../images/main/Doctor3.png'),
   };
   const handleNext = () => {
     onboardingRef.current.goNext();
   };
 
-  
   const CustomDot = ({selected}) => {
     let backgroundColor = selected ? primaryDarkColor : '#CCCCCC';
     return (
@@ -54,7 +58,7 @@ const OnBoarding = () => {
         style={[
           styles.dot,
           {
-            backgroundColor
+            backgroundColor,
           },
         ]}
       />
@@ -63,15 +67,14 @@ const OnBoarding = () => {
 
   return (
     <View style={{flex: 1}}>
-        <StatusBar barStyle = 'light-content' />
+      <StatusBar barStyle="light-content" />
       <Onboarding
         ref={onboardingRef}
-        showNext={false} 
-        showSkip={false} 
-        showDone={false} 
-        DotComponent={CustomDot} 
-        bottomBarHighlight={false} 
-      
+        showNext={false}
+        showSkip={false}
+        showDone={false}
+        DotComponent={CustomDot}
+        bottomBarHighlight={false}
         pages={[
           {
             backgroundColor: 'white',
@@ -99,7 +102,9 @@ const OnBoarding = () => {
             backgroundColor: 'white',
             image: (
               <DynamicComponent
-                handleNext={() =>{navigation.navigate('Home')}}
+                handleNext={() => {
+                  navigation.navigate('Home');
+                }}
                 title="Thousands of Online Specialists"
                 description=" Explore a Vast Array of Online Medical Specialists, Offering an Extensive Range of Expertise Tailored to Your Healthcare Needs."
                 image={images.Doctor3}
@@ -108,8 +113,6 @@ const OnBoarding = () => {
           },
         ]}
       />
-     
-     
     </View>
   );
 };
@@ -117,7 +120,13 @@ const OnBoarding = () => {
 export default OnBoarding;
 
 const styles = ScaledSheet.create({
-  title: {fontSize: '15.5@s', fontWeight: 'bold', paddingBottom: '10@s', marginTop:'10@s'},
+  title: {
+    fontSize: '15.5@s',
+    fontWeight: 'bold',
+    paddingBottom: '10@s',
+    marginTop: '10@s',
+    textAlign: 'center',
+  },
   description: {
     fontSize: '12.5@s',
     fontWeight: '500',
@@ -128,12 +137,12 @@ const styles = ScaledSheet.create({
     flex: 0.3,
     backgroundColor: 'white',
     marginTop: '-20@s',
-    paddingBottom:'10@s',
+    paddingBottom: '10@s',
     alignSelf: 'center',
     justifyContent: 'center',
     alignItems: 'center',
     paddingHorizontal: width * 0.03,
-    marginBottom:'-7@s',
+    marginBottom: '-7@s',
     paddingTop: '5@s',
     // borderRadius: width * 0.05,
     borderTopLeftRadius: width * 0.05,
@@ -147,12 +156,12 @@ const styles = ScaledSheet.create({
     marginHorizontal: 5,
   },
   dotBar: {
-    backgroundColor: 'red', 
-    paddingVertical: '10@s', 
-    flexDirection: 'row', 
-    justifyContent: 'center', 
+    backgroundColor: 'red',
+    paddingVertical: '10@s',
+    flexDirection: 'row',
+    justifyContent: 'center',
     position: 'absolute',
-    bottom: 0, 
+    bottom: 0,
     width: '100%',
   },
 });

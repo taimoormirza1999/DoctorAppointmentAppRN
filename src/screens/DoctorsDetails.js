@@ -1,5 +1,5 @@
 import {Image, ScrollView, StyleSheet, Text, View} from 'react-native';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import SafeAreaWrapper from '../constants/SafeAreaWrapper';
 import DoctorsList from '../components/DoctorsList';
 import CustomBottomTab from '../components/CustomBottomTab';
@@ -16,8 +16,7 @@ import {
   gray600,
   primaryDarkColor,
 } from '../constants/Colors';
-import Icon from 'react-native-vector-icons/AntDesign';
-import HomeSVG from '../svgs/HomeSVG';
+
 import TwoUsersSVG from '../svgs/TwoUsersSVG';
 import {
   absolutePosWValue,
@@ -81,7 +80,13 @@ const tabData = [
     label: 'reviews',
   },
 ];
-const DoctorsDetails = ({navigation}) => {
+const DoctorsDetails = ({navigation, route}) => {
+const [item, setItem]=useState(null);
+  React.useEffect(() => {
+    if (route.params?.selectedDoctor) {
+      setItem(route.params?.selectedDoctor)
+    }
+  }, [route.params?.selectedDoctor]);
   return (
     <SafeAreaWrapper backgroundColor={'white'}>
       <HeaderTitle title={'Doctor Details'} navigation={navigation} />
@@ -91,10 +96,10 @@ const DoctorsDetails = ({navigation}) => {
           showsVerticalScrollIndicator={false}>
           <View style={styles.containe}>
             <DoctorCardHorizontal
-              image={DoctorsImages.doctor7}
-              doctorName="Dr. David Patel"
-              category="Cardiologist"
-              location="Cardiology Center, USA"
+              image={item?.image_path}
+              doctorName={item?.doctorName}
+              category={item?.category}
+              location={item?.location}
               handleAction={() => {}}
             />
 
@@ -112,8 +117,8 @@ const DoctorsDetails = ({navigation}) => {
             </View>
             <Text style={[styles.heading]}>About me</Text>
             <Text style={[styles.description]}>
-              Dr. David Patel, a dedicated cardiologist, brings a wealth of
-              experience to Golden Gate Cardiology Center in Golden Gate, CA.
+              {item?.doctorName}, a dedicated {item?.category}, brings a wealth of
+              experience to Golden Gate {item?.category} Center in {item?.location}.
             </Text>
 
             <View style={[{marginTop: 20}]}>
@@ -162,7 +167,7 @@ const DoctorsDetails = ({navigation}) => {
             absolutePosWValue('bottom', 0),
             {width: '100%', alignItems: 'center',},
           ]}>
-          <Button text={'BookBook Appointment'} handleNext={()=>navigation.navigate("BookAppointment")} />
+          <Button text={'BookBook Appointment'} handleNext={()=>navigation.navigate("BookAppointment", {doctorName:item?.doctorName})} />
         </View>
         {/* <CustomBottomTab activeTab={'doctors'} navigation={navigation} /> */}
       </View>

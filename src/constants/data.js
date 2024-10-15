@@ -1,7 +1,7 @@
-import { DoctorsImages } from './DoctorsImages';
+import { DoctorsImages, HospitalImages } from './DoctorsImages';
 
 export const SliderData={
-    'image': require('../images/main/Doctor11.png'),
+    'image': require('../images/main/Doctor19.png'),
     'title': 'Looking for Specialist Doctors?',
     'description': 'Schedule an appointment with our top doctors',
 }
@@ -19,9 +19,40 @@ export const categories=(svgsCategories)=>
       ];
  }
 
+export const AllHospitalsData = [
+    {
+      image: HospitalImages.hospital1,
+      image_path: require('../images/main/Hospital1.png'),
+      rating: "4.5",
+      reviews: "7772",
+      doctorName: "Melbrone Cardology",
+      category: "Cardiolog",
+      location: "Cardiology Center, USA",
+    },
+    {
+      image: HospitalImages.hospital2,
+      image_path: require('../images/main/Hospital2.png'),
+      rating: "4.5",
+      reviews: "7772",
+      doctorName: "Melbrone General Health Care",
+      category: "Health Care",
+      location: "Cardiology Center, USA",
+    },
+    {
+      image: HospitalImages.hospital3,
+      image_path: require('../images/main/Hospital3.png'),
+      rating: "4.5",
+      reviews: "7772",
+      doctorName: "Melbrone Neurology",
+      category: "Neurology",
+      location: "Cardiology Center, USA",
+    },
+
+  ];
 export const AllDoctorsData = [
     {
       image: DoctorsImages.doctor7,
+      image_path: require('../images/main/Doctor7.png'),
       rating: "5",
       reviews: "1,872",
       doctorName: "Dr. David Patel",
@@ -30,6 +61,7 @@ export const AllDoctorsData = [
     },
     {
       image: DoctorsImages.doctor2,
+      image_path: require('../images/main/Doctor2.png'),
       rating: "4.9",
       reviews: "127",
       doctorName: "Dr. Jessica Turner",
@@ -38,6 +70,7 @@ export const AllDoctorsData = [
     },
     {
       image: DoctorsImages.doctor3,
+       image_path: require('../images/main/Doctor3.png'),
       rating: "5",
       reviews: "5,223",
       doctorName: "Dr. Michael Johnson",
@@ -46,6 +79,7 @@ export const AllDoctorsData = [
     },
     {
       image: DoctorsImages.doctor4,
+       image_path: require('../images/main/Doctor4.png'),
       rating: "4.6",
       reviews: "405",
       doctorName: "Dr. Emily Walker",
@@ -54,6 +88,7 @@ export const AllDoctorsData = [
     },
     {
       image: DoctorsImages.doctor6,
+       image_path: require('../images/main/Doctor6.png'),
       rating: "4.8",
       reviews: "980",
       doctorName: "Dr. Sarah Thompson",
@@ -62,6 +97,7 @@ export const AllDoctorsData = [
     },
     {
       image: DoctorsImages.doctor5,
+       image_path: require('../images/main/Doctor5.png'),
       rating: "4.7",
       reviews: "765",
       doctorName: "Dr. Robert Anderson",
@@ -70,6 +106,7 @@ export const AllDoctorsData = [
     },
     {
       image: DoctorsImages.doctor8,
+       image_path: require('../images/main/Doctor8.png'),
       rating: "4.9",
       reviews: "1,034",
       doctorName: "Dr. Linda Garcia",
@@ -78,6 +115,7 @@ export const AllDoctorsData = [
     },
     {
       image: DoctorsImages.doctor17,
+       image_path: require('../images/main/Doctor17.png'),
       rating: "5",
       reviews: "2,100",
       doctorName: "Dr. John Williams",
@@ -86,6 +124,7 @@ export const AllDoctorsData = [
     },
     {
       image: DoctorsImages.doctor9,
+       image_path: require('../images/main/Doctor9.png'),
       rating: "4.8",
       reviews: "654",
       doctorName: "Dr. Rachel Brown",
@@ -94,6 +133,7 @@ export const AllDoctorsData = [
     },
     {
       image: DoctorsImages.doctor16,
+       image_path: require('../images/main/Doctor16.png'),
       rating: "4.7",
       reviews: "834",
       doctorName: "Dr. Marryan Harris",
@@ -105,6 +145,7 @@ export const AllDoctorsData = [
   export const DentistryDoctors = [
     {
       image: DoctorsImages.doctor18,
+      image_path: require('../images/main/Doctor18.png'),
       rating: "5",
       reviews: "1,872",
       doctorName: "Dr. John Williams",
@@ -113,6 +154,7 @@ export const AllDoctorsData = [
     },
     {
       image: DoctorsImages.doctor14,
+      image_path: require('../images/main/Doctor14.png'),
       rating: "4.9",
       reviews: "2,100",
       doctorName: "Dr. Emily Stone",
@@ -121,6 +163,7 @@ export const AllDoctorsData = [
     },
     {
       image: DoctorsImages.doctor6,
+      image_path: require('../images/main/Doctor6.png'),
       rating: "4.8",
       reviews: "1,547",
       doctorName: "Dr. Sarah Parker",
@@ -129,6 +172,7 @@ export const AllDoctorsData = [
     },
     {
       image: DoctorsImages.doctor17,
+      image_path: require('../images/main/Doctor17.png'),
       rating: "4.7",
       reviews: "980",
       doctorName: "Dr. Michael Thompson",
@@ -137,6 +181,7 @@ export const AllDoctorsData = [
     },
     {
       image: DoctorsImages.doctor19,
+      image_path: require('../images/main/Doctor19.png'),
       rating: "5",
       reviews: "3,205",
       doctorName: "Dr. Jessica Lee",
@@ -148,6 +193,7 @@ export const AllDoctorsData = [
   export const CardiologyDoctors = [
     {
       image: DoctorsImages.doctor20,
+      image_path: require('../images/main/Doctor20.png'),
       rating: "5",
       reviews: "2,300",
       doctorName: "Dr. David Patel",
@@ -156,6 +202,7 @@ export const AllDoctorsData = [
     },
     {
       image: DoctorsImages.doctor11,
+      image_path: require('../images/main/Doctor11.png'),
       rating: "4.9",
       reviews: "1,550",
       doctorName: "Dr. Jessica Turner",
@@ -164,6 +211,7 @@ export const AllDoctorsData = [
     },
     {
       image: DoctorsImages.doctor16,
+      image_path: require('../images/main/Doctor16.png'),
       rating: "5",
       reviews: "4,200",
       doctorName: "Dr. Mona Johnson",
@@ -172,6 +220,7 @@ export const AllDoctorsData = [
     },
     {
       image: DoctorsImages.doctor13,
+      image_path: require('../images/main/Doctor13.png'),
       rating: "4.8",
       reviews: "980",
       doctorName: "Dr. Sarah Adams",
@@ -180,6 +229,7 @@ export const AllDoctorsData = [
     },
     {
       image: DoctorsImages.doctor17,
+      image_path: require('../images/main/Doctor17.png'),
       rating: "4.7",
       reviews: "1,800",
       doctorName: "Dr. Robert Anderson",
@@ -187,9 +237,11 @@ export const AllDoctorsData = [
       location: "Heart & Vascular Institute, Houston, USA",
     },
   ];
+  
   export const PulmonologyDoctors = [
     {
       image: DoctorsImages.doctor10,
+      image_path: require('../images/main/Doctor10.png'),
       rating: "5",
       reviews: "2,450",
       doctorName: "Dr. Emily Parker",
@@ -198,6 +250,7 @@ export const AllDoctorsData = [
     },
     {
       image: DoctorsImages.doctor17,
+      image_path: require('../images/main/Doctor17.png'),
       rating: "4.8",
       reviews: "1,320",
       doctorName: "Dr. Michael Scott",
@@ -206,6 +259,7 @@ export const AllDoctorsData = [
     },
     {
       image: DoctorsImages.doctor11,
+      image_path: require('../images/main/Doctor11.png'),
       rating: "4.9",
       reviews: "2,200",
       doctorName: "Dr. Sarah Johnson",
@@ -214,6 +268,7 @@ export const AllDoctorsData = [
     },
     {
       image: DoctorsImages.doctor3,
+      image_path: require('../images/main/Doctor3.png'),
       rating: "5",
       reviews: "3,100",
       doctorName: "Dr. Linda Anderson",
@@ -222,6 +277,7 @@ export const AllDoctorsData = [
     },
     {
       image: DoctorsImages.doctor1,
+      image_path: require('../images/main/Doctor1.png'),
       rating: "4.7",
       reviews: "950",
       doctorName: "Dr. Robert Lee",
@@ -229,9 +285,11 @@ export const AllDoctorsData = [
       location: "Lung Health Associates, Miami, USA",
     },
   ];
+  
   export const GeneralDoctors = [
     {
       image: DoctorsImages.doctor5,
+      image_path: require('../images/main/Doctor5.png'),
       rating: "5",
       reviews: "1,800",
       doctorName: "Dr. John Adams",
@@ -240,6 +298,7 @@ export const AllDoctorsData = [
     },
     {
       image: DoctorsImages.doctor4,
+      image_path: require('../images/main/Doctor4.png'),
       rating: "4.9",
       reviews: "1,500",
       doctorName: "Dr. Emily Thompson",
@@ -248,6 +307,7 @@ export const AllDoctorsData = [
     },
     {
       image: DoctorsImages.doctor3,
+      image_path: require('../images/main/Doctor3.png'),
       rating: "4.7",
       reviews: "2,100",
       doctorName: "Dr. Sarah Lee",
@@ -256,6 +316,7 @@ export const AllDoctorsData = [
     },
     {
       image: DoctorsImages.doctor7,
+      image_path: require('../images/main/Doctor7.png'),
       rating: "4.6",
       reviews: "900",
       doctorName: "Dr. Robert Brown",
@@ -264,6 +325,7 @@ export const AllDoctorsData = [
     },
     {
       image: DoctorsImages.doctor1,
+      image_path: require('../images/main/Doctor1.png'),
       rating: "5",
       reviews: "3,200",
       doctorName: "Dr. Jessica Davis",
@@ -274,6 +336,7 @@ export const AllDoctorsData = [
   export const NeurologyDoctors = [
     {
       image: DoctorsImages.doctor9,
+      image_path: require('../images/main/Doctor9.png'),
       rating: "5",
       reviews: "1,950",
       doctorName: "Dr. Linda Walker",
@@ -282,6 +345,7 @@ export const AllDoctorsData = [
     },
     {
       image: DoctorsImages.doctor10,
+      image_path: require('../images/main/Doctor10.png'),
       rating: "4.9",
       reviews: "1,250",
       doctorName: "Dr. Michael Harris",
@@ -290,6 +354,7 @@ export const AllDoctorsData = [
     },
     {
       image: DoctorsImages.doctor11,
+      image_path: require('../images/main/Doctor11.png'),
       rating: "5",
       reviews: "2,450",
       doctorName: "Dr. Sarah Miller",
@@ -298,6 +363,7 @@ export const AllDoctorsData = [
     },
     {
       image: DoctorsImages.doctor17,
+      image_path: require('../images/main/Doctor17.png'),
       rating: "4.8",
       reviews: "1,800",
       doctorName: "Dr. Robert Taylor",
@@ -306,6 +372,7 @@ export const AllDoctorsData = [
     },
     {
       image: DoctorsImages.doctor19,
+      image_path: require('../images/main/Doctor19.png'),
       rating: "4.7",
       reviews: "950",
       doctorName: "Dr. Jessica Brown",
@@ -313,9 +380,11 @@ export const AllDoctorsData = [
       location: "Brain & Spine Clinic, Boston, USA",
     },
   ];
+  
   export const GastroenterologistDoctors = [
     {
       image: DoctorsImages.doctor16,
+      image_path: require('../images/main/Doctor16.png'),
       rating: "5",
       reviews: "2,300",
       doctorName: "Dr. Emily Scott",
@@ -324,6 +393,7 @@ export const AllDoctorsData = [
     },
     {
       image: DoctorsImages.doctor18,
+      image_path: require('../images/main/Doctor18.png'),
       rating: "4.8",
       reviews: "1,750",
       doctorName: "Dr. Michael Johnson",
@@ -332,6 +402,7 @@ export const AllDoctorsData = [
     },
     {
       image: DoctorsImages.doctor19,
+      image_path: require('../images/main/Doctor19.png'),
       rating: "5",
       reviews: "2,100",
       doctorName: "Dr. Sarah Thompson",
@@ -340,6 +411,7 @@ export const AllDoctorsData = [
     },
     {
       image: DoctorsImages.doctor20,
+      image_path: require('../images/main/Doctor20.png'),
       rating: "4.7",
       reviews: "1,400",
       doctorName: "Dr. Robert Lee",
@@ -348,6 +420,7 @@ export const AllDoctorsData = [
     },
     {
       image: DoctorsImages.doctor1,
+      image_path: require('../images/main/Doctor1.png'),
       rating: "4.9",
       reviews: "2,500",
       doctorName: "Dr. Jessica Davis",
@@ -355,9 +428,11 @@ export const AllDoctorsData = [
       location: "Advanced GI Care, Los Angeles, USA",
     },
   ];
+  
   export const LaboratoryDoctors = [
     {
       image: DoctorsImages.doctor3,
+      image_path: require('../images/main/Doctor3.png'),
       rating: "4.9",
       reviews: "1,980",
       doctorName: "Dr. Emily Brown",
@@ -366,6 +441,7 @@ export const AllDoctorsData = [
     },
     {
       image: DoctorsImages.doctor7,
+      image_path: require('../images/main/Doctor7.png'),
       rating: "4.7",
       reviews: "1,400",
       doctorName: "Dr. Michael Williams",
@@ -374,6 +450,7 @@ export const AllDoctorsData = [
     },
     {
       image: DoctorsImages.doctor16,
+      image_path: require('../images/main/Doctor16.png'),
       rating: "4.8",
       reviews: "2,050",
       doctorName: "Dr. Sarah Lee",
@@ -382,6 +459,7 @@ export const AllDoctorsData = [
     },
     {
       image: DoctorsImages.doctor21,
+      image_path: require('../images/main/Doctor21.png'),
       rating: "5",
       reviews: "2,300",
       doctorName: "Dr. Robert Taylor",
@@ -390,6 +468,7 @@ export const AllDoctorsData = [
     },
     {
       image: DoctorsImages.doctor1,
+      image_path: require('../images/main/Doctor1.png'),
       rating: "4.9",
       reviews: "1,600",
       doctorName: "Dr. Jessica Parker",
@@ -397,6 +476,7 @@ export const AllDoctorsData = [
       location: "Diagnostic Labs, Los Angeles, USA",
     },
   ];
+  
   export const VaccinationDoctors = [
     {
       image: DoctorsImages.doctor19,

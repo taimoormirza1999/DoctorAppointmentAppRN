@@ -14,6 +14,7 @@ import AllDoctors from './screens/AllDoctors';
 import DoctorsDetails from './screens/DoctorsDetails';
 import MyAppointments from './screens/MyAppointments';
 import Notifications from './screens/Notifications';
+import MapAddress from './screens/MapAddress';
 const Stack = createNativeStackNavigator();
 const AppNavigator = () => {
   return (
@@ -25,9 +26,14 @@ const AppNavigator = () => {
           options={{headerShown: false}}
         />
         <Stack.Screen
+          component={MapAddress}
+          name="MapAddress"
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
           component={AllDoctors}
           name="AllDoctors"
-          options={{headerShown: false}}
+          options={{headerShown: false, animation:'fade_from_bottom'}}
         />
         <Stack.Screen
           component={DoctorsDetails}
@@ -40,7 +46,7 @@ const AppNavigator = () => {
         <Stack.Screen
           component={MyAppointments}
           name="MyAppointments"
-          options={{headerShown: false}}
+          options={{headerShown: false, animation:'fade'}}
         />
         <Stack.Screen
           component={OnBoarding}
@@ -56,7 +62,7 @@ const AppNavigator = () => {
         <Stack.Screen
           component={Home}
           name="Home"
-          options={{headerShown: false}}
+          options={{headerShown: false, animation:'fade_from_bottom'}}
         />
         <Stack.Screen
           component={BookAppointment}

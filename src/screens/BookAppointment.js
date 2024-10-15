@@ -23,8 +23,8 @@ import Button from '../components/Button';
 import { scale, ScaledSheet } from 'react-native-size-matters';
 
 let DaysList = [];
-const BookAppointment = ({navigation}) => {
-  const [selectedSlot, setSelectedSlot] = useState(-1);
+const BookAppointment = ({navigation, route}) => {
+ 
   const [selectedGender, setSelectedGender] = useState(0);
   const [selectedDay, setSelectedDay] = useState(-1);
   const onDayPress = (day) => {
@@ -44,6 +44,7 @@ const BookAppointment = ({navigation}) => {
     {text: '05:00 PM', fill: false},
     {text: '05:30 PM', fill: true},
   ]);
+  const [selectedSlot, setSelectedSlot] = useState(timeSlotStates[11].text);
   const today = new Date();
   const SixDaysLater = new Date(today);
   SixDaysLater.setDate(SixDaysLater.getDate() + 3);
@@ -53,6 +54,11 @@ const BookAppointment = ({navigation}) => {
 
   const [days, setDays] = useState([]);
 
+  useEffect(() => {
+    if (route.params?.doctorName) {
+
+    }
+  }, [route.params?.doctorName]);
   useEffect(() => {
     DaysList = [];
     for (let i = 1; i <= getDays(new Date().getMonth() + 1); i++) {
@@ -160,7 +166,7 @@ const BookAppointment = ({navigation}) => {
           ))}
         </View>
        </View>
-      
+      <View style={{height:scale(70)}}></View>
       </View>
      </ScrollView>
      <View  style={[
@@ -171,7 +177,7 @@ const BookAppointment = ({navigation}) => {
           <Button
             text={'Done'}
             handleNext={() => {
-              navigation.navigate('Success');
+              navigation.navigate('Success', {doctorName:route.params?.doctorName, selectedDate:selectedDate, selectedSlot:selectedSlot});
             }}
           />
         </View>
