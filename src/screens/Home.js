@@ -46,7 +46,9 @@ const HeaderHome = ({navigation}) => {
       </Text>
       <View style={[justRow, w100]}>
         
-        <TouchableOpacity onPress={requestLocationPermission} style={[justRow]}>
+        <TouchableOpacity onPress={()=>{
+          navigation.navigate("MapAddress")
+        }} style={[justRow]}>
           <LocationSVG height={scale(18)} width={scale(18)} />
           <Text style={[[body.bodySSemiBold, {marginLeft: 5}]]}>
            {address.fullAddress}

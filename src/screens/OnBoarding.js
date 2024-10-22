@@ -9,7 +9,7 @@ import {cardShadow, lightShadow, mediumShadow} from '../constants/Shadows';
 import {useNavigation} from '@react-navigation/native';
 import FastImage from 'react-native-fast-image';
 import { AnimatedWrapper } from '../constants/AnimationEntering';
-import { w100 } from '../constants/commonStyles';
+import { AlignSelf, w100 } from '../constants/commonStyles';
 const DynamicComponent = ({handleNext, title, description, image}) => {
   return (
     <AnimatedWrapper style={{}}>
@@ -20,6 +20,8 @@ const DynamicComponent = ({handleNext, title, description, image}) => {
             flex: 1,
             height: width,
             width: width,
+            
+            // transform: [{ translateX: -20 }],
           }}
           resizeMode={FastImage.resizeMode.cover}
         />
@@ -31,7 +33,7 @@ const DynamicComponent = ({handleNext, title, description, image}) => {
          <AnimatedWrapper style={w100}>
         <Text style={styles.description}>{description}</Text>
          </AnimatedWrapper>
-        <AnimatedWrapper style={w100}>
+        <AnimatedWrapper style={[w100, {alignItems:'center'}]}>
         <Button text={'Next'} handleNext={handleNext} />
         </AnimatedWrapper>
       </View>
@@ -44,8 +46,8 @@ const OnBoarding = () => {
   const onboardingRef = useRef(null);
   const images = {
     Doctor1: require('../images/main/Doctor1.png'),
-    Doctor2: require('../images/main/Doctor2.png'),
-    Doctor3: require('../images/main/Doctor3.png'),
+    Doctor2: require('../images/main/Doctor5.png'),
+    Doctor3: require('../images/main/Doctor-22.png'),
   };
   const handleNext = () => {
     onboardingRef.current.goNext();

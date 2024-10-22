@@ -1,13 +1,17 @@
-import {View, Text, TouchableOpacity} from 'react-native';
+import { Text, TouchableOpacity} from 'react-native';
 import React from 'react';
 import Icon from 'react-native-vector-icons/Ionicons';
-import {gray50, gray550} from '../constants/Colors';
+import { gray550} from '../constants/Colors';
 import {ScaledSheet} from 'react-native-size-matters';
 import {iconSizes} from '../constants/DimensionFontSizes';
 import Animated, { FadeInDown, FadeInUp } from "react-native-reanimated";
 
-const HeaderTitle = ({title, icon, navigation}) => {
+const HeaderTitle = ({title, icon, navigation,goHome}) => {
   const handleBack = () => {
+    if(goHome==true){
+      navigation.navigate('Home');
+      return;
+    }
     navigation.goBack();
   };
   return (
@@ -35,7 +39,7 @@ const HeaderTitle = ({title, icon, navigation}) => {
         <Icon name="return-up-back" size={iconSizes.normal} color={gray550} />
       </TouchableOpacity>
 
-      <Text style={[styles.title, {marginLeft: 10}]}>{title}</Text>
+      <Text style={[styles.title, {}]}>{title}</Text>
     </Animated.View>
   );
 };
@@ -45,11 +49,11 @@ const styles = ScaledSheet.create({
     height: '40@s',
     width: '100%',
     flexDirection: 'row',
-    backgroundColor: gray50,
+    backgroundColor: 'transparent',
     elevation: 5,
     alignItems: 'center',
     justifyContent: 'center',
-    paddingLeft: '20@s',
+    // paddingLeft: '20@s',
     position: 'relative',
   },
   backBtn: {
@@ -57,9 +61,13 @@ const styles = ScaledSheet.create({
     height: '30#s',
     borderRadius: 15,
     position: 'absolute',
-    left: '15@s',
+    left: '0@s',
   },
   title: {
+    // position: 'absolute',
+    textAlign:'center',
+    alignSelf:'center',
+    alignItems: 'center',
     color: gray550,
     fontSize: '14@s',
     fontWeight: '600',

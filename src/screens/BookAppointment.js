@@ -16,7 +16,7 @@ import SafeAreaWrapper from '../constants/SafeAreaWrapper';
 import CustomBottomTab from '../components/CustomBottomTab';
 import {Calendar} from 'react-native-calendars';
 import {gray200, primaryDarkColor} from '../constants/Colors';
-import {absolutePosWValue, AlignSelf, FixedButtonBackground, headings, sectionSeprator} from '../constants/commonStyles';
+import {absolutePosWValue, AlignSelf, containerStyles, FixedButtonBackground, headings, sectionSeprator} from '../constants/commonStyles';
 import {lightShadow} from '../constants/Shadows';
 import TimeSlot from '../components/TimeSlot';
 import Button from '../components/Button';
@@ -107,9 +107,9 @@ const BookAppointment = ({navigation, route}) => {
 
   return (
     <SafeAreaWrapper backgroundColor={'white'}>
-     <ScrollView>
+     <ScrollView style={containerStyles}>
+      <View style={containerStyles}>
      <HeaderTitle title={'Book Appointment'} navigation={navigation} />
-      <View style={styles.container}>
         <View style={[styles.compoCard, AlignSelf, sectionSeprator,{width: '100%'}]}>
           <Text style={[headings.h1,styles.headingStyle,]}>Select Date</Text>
           <Calendar

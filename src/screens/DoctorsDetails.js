@@ -1,5 +1,5 @@
 import {Image, ScrollView, StyleSheet, Text, View} from 'react-native';
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import SafeAreaWrapper from '../constants/SafeAreaWrapper';
 import DoctorsList from '../components/DoctorsList';
 import CustomBottomTab from '../components/CustomBottomTab';
@@ -21,6 +21,7 @@ import TwoUsersSVG from '../svgs/TwoUsersSVG';
 import {
   absolutePosWValue,
   AlignSelf,
+  containerStyles,
   FixedButtonBackground,
   justRow,
   VerticalHorizontalCenter,
@@ -81,19 +82,19 @@ const tabData = [
   },
 ];
 const DoctorsDetails = ({navigation, route}) => {
-const [item, setItem]=useState(null);
+  const [item, setItem] = useState(null);
   React.useEffect(() => {
     if (route.params?.selectedDoctor) {
-      setItem(route.params?.selectedDoctor)
+      setItem(route.params?.selectedDoctor);
     }
   }, [route.params?.selectedDoctor]);
   return (
     <SafeAreaWrapper backgroundColor={'white'}>
-      <HeaderTitle title={'Doctor Details'} navigation={navigation} />
-      <View style={styles.container}>
+      <View style={containerStyles}>
         <ScrollView
-          style={styles.container}
+          style={containerStyles}
           showsVerticalScrollIndicator={false}>
+          <HeaderTitle title={'Doctor Details'} navigation={navigation} />
           <View style={styles.containe}>
             <DoctorCardHorizontal
               image={item?.image_path}
@@ -117,8 +118,9 @@ const [item, setItem]=useState(null);
             </View>
             <Text style={[styles.heading]}>About me</Text>
             <Text style={[styles.description]}>
-              {item?.doctorName}, a dedicated {item?.category}, brings a wealth of
-              experience to Golden Gate {item?.category} Center in {item?.location}.
+              {item?.doctorName}, a dedicated {item?.category}, brings a wealth
+              of experience to Golden Gate {item?.category} Center in{' '}
+              {item?.location}.
             </Text>
 
             <View style={[{marginTop: 20}]}>
@@ -144,8 +146,8 @@ const [item, setItem]=useState(null);
                       {Array(5)
                         .fill(null)
                         .map((_, index) => (
-                         <View style={{marginLeft:scale(3)}}>
-                           <StarSVG />
+                          <View style={{marginLeft: scale(3)}}>
+                            <StarSVG />
                           </View>
                         ))}
                     </View>
@@ -165,9 +167,16 @@ const [item, setItem]=useState(null);
           style={[
             FixedButtonBackground,
             absolutePosWValue('bottom', 0),
-            {width: '100%', alignItems: 'center',},
+            {width: '100%', alignItems: 'center'},
           ]}>
-          <Button text={'BookBook Appointment'} handleNext={()=>navigation.navigate("BookAppointment", {doctorName:item?.doctorName})} />
+          <Button
+            text={'BookBook Appointment'}
+            handleNext={() =>
+              navigation.navigate('BookAppointment', {
+                doctorName: item?.doctorName,
+              })
+            }
+          />
         </View>
         {/* <CustomBottomTab activeTab={'doctors'} navigation={navigation} /> */}
       </View>

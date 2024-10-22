@@ -110,6 +110,13 @@ export const body = {
     fontFamily:'Inter_18pt-Regular'
     },
 };
+export const containerStyles={
+  flex: 1,
+  width: '96%',
+  alignSelf: 'center',
+  backgroundColor: '#fff',
+}
+
 // Other Styles
 // const pageHeader={
 //     paddingBottom: 8,
@@ -133,14 +140,17 @@ export const body = {
 //     fontSize: fontSizes.small,
 //     fontWeight: 'bold',
 //   }
-// const inputStyle={
-//   paddingVertical:inputPadding.Vertical,
-//   height:height * 0.065,
-//   backgroundColor: 'white',
-//   fontSize:fontSizes.small,
-//   fontFamily: 'OpenSans-Regular',
-//   width: '100%',
-// }
+export const inputStyle={
+  paddingVertical:inputPadding.Vertical,
+  height:height * 0.065,
+  backgroundColor: 'white',
+  fontSize:fontSizes.small,
+  fontFamily: 'Inter_18pt-Regular',
+  width: '100%',
+  // borderWidth: 0.5,
+  // // borderRadius: 40,
+  marginBottom: scale(5),
+}
 // const modalText={
 //   textAlign: 'justify',
 //   fontFamily: 'OpenSans-Regular',
@@ -267,9 +277,9 @@ export const absolutePosWJustValue = (position, value) => {
 // const cardCompoDynamicPadding=(currentLanguage,value)=>{
 //   return {paddingLeft: currentLanguage=='en'&&value, paddingRight: currentLanguage=='ar'&&value }
 // }
-// const rowDirectionDynamic=(currentLanguage) =>{
-//   return {flexDirection: currentLanguage=='ar' ? "row-reverse" : "row"}
-// }
+export const rowDirectionDynamic=(currentLanguage) =>{
+  return {flexDirection: currentLanguage=='ar' ? "row-reverse" : "row"}
+}
 // const marginLeftRightDynamic=(currentLanguage, value) =>{
 //   return { marginLeft: currentLanguage == "en" && value,
 //     marginRight: currentLanguage == "ar" && value,}

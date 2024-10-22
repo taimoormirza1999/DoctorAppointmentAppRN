@@ -7,6 +7,7 @@ import {scale, ScaledSheet} from 'react-native-size-matters';
 import {width} from '../constants/DimensionFontSizes';
 import HeaderTitle from '../components/HeaderTitle';
 import {
+  containerStyles,
   headingCommonStyle,
   headings,
   sectionSeprator,
@@ -35,9 +36,9 @@ const AllDoctors = ({navigation, route}) => {
   }, [route.params?.pageTitle]);
   return (
     <SafeAreaWrapper backgroundColor={'white'}>
-      <View style={styles.container}>
+      <View style={containerStyles}>
         <ScrollView
-          style={styles.container}
+          style={containerStyles}
           showsVerticalScrollIndicator={false}>
           <View style={styles.containe}>
             <HeaderTitle title={pageTitle} navigation={navigation} />

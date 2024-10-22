@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { Alert, StyleSheet, Text, View } from 'react-native'
 import React, { createContext, useEffect, useState } from 'react'
 import { request, PERMISSIONS } from 'react-native-permissions';
 import Geolocation from '@react-native-community/geolocation';
@@ -42,10 +42,11 @@ export const UserProvider = ({ children }) => {
             // console.log(`City: ${city}, Country: ${country}`);
 
         } else {
-          console.error('Error in the Geocoding response:', data.status);
+          // console.error('Error in the Geocoding response:', data.status);
         }
       } catch (error) {
-        console.error('Error fetching Geocoding data:', error);
+        Alert.alert("Network Error, Please check your internet connection!");
+        // console.error('Error fetching Geocoding data:', error);
       }
     };
     const requestLocationPermission = async () => {

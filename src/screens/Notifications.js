@@ -6,15 +6,15 @@ import CustomBottomTab from '../components/CustomBottomTab';
 import {scale, ScaledSheet} from 'react-native-size-matters';
 import {width} from '../constants/DimensionFontSizes';
 import HeaderTitle from '../components/HeaderTitle';
-import { headingCommonStyle, headings, sectionSeprator } from '../constants/commonStyles';
+import { containerStyles, headingCommonStyle, headings, sectionSeprator } from '../constants/commonStyles';
 import NotificationList from '../components/NotificationList';
 
 const Notifications = ({navigation}) => {
   return (
     <SafeAreaWrapper backgroundColor={'white'}>
-      <View style={styles.container}>
+      <View style={containerStyles}>
         <ScrollView
-          style={styles.container}
+          style={containerStyles}
           showsVerticalScrollIndicator={false}>
           <View style={styles.containe}>
             <HeaderTitle title="Notification" navigation={navigation}/>
@@ -34,12 +34,6 @@ const Notifications = ({navigation}) => {
 export default Notifications;
 
 const styles = ScaledSheet.create({
-  container: {
-    flex: 1,
-    width: '96%',
-    alignSelf: 'center',
-    backgroundColor: '#fff',
-  },
   section: {
     marginTop: '20@s',
   },

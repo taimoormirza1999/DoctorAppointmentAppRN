@@ -6,7 +6,8 @@ import Splash from './screens/Splash';
 import Home from './screens/Home';
 import BookAppointment from './screens/BookAppointment';
 import Success from './screens/Success';
-import Pending from './screens/Pending';
+import SignIn from './screens/SignIn';
+import SignUp from './screens/SignUp';
 import OnBoarding from './screens/OnBoarding';
 import Completed from './screens/Completed';
 import CallAmb from './screens/CallAmb';
@@ -15,6 +16,7 @@ import DoctorsDetails from './screens/DoctorsDetails';
 import MyAppointments from './screens/MyAppointments';
 import Notifications from './screens/Notifications';
 import MapAddress from './screens/MapAddress';
+import Profile from './screens/Profile';
 const Stack = createNativeStackNavigator();
 const AppNavigator = () => {
   return (
@@ -31,9 +33,14 @@ const AppNavigator = () => {
           options={{headerShown: false}}
         />
         <Stack.Screen
+          component={Profile}
+          name="Profile"
+          options={{headerShown: false, animation: 'fade',}}
+        />
+        <Stack.Screen
           component={AllDoctors}
           name="AllDoctors"
-          options={{headerShown: false, animation:'fade_from_bottom'}}
+          options={{headerShown: false, animation:'fade'}}
         />
         <Stack.Screen
           component={DoctorsDetails}
@@ -56,8 +63,8 @@ const AppNavigator = () => {
         <Stack.Screen
           component={Notifications}
           name="Notifications"
-          options={{headerShown: false, animation: 'slide_from_bottom',
-            presentation: 'modal',}}
+          options={{headerShown: false, animation: 'fade',
+           }}
         />
         <Stack.Screen
           component={Home}
@@ -75,13 +82,17 @@ const AppNavigator = () => {
           options={{
             headerShown: false,
             animation: 'slide_from_bottom',
-            presentation: 'modal',
           }}
         />
         <Stack.Screen
-          component={Pending}
-          name="Pending"
-          options={{headerShown: false}}
+          component={SignIn}
+          name="SignIn"
+          options={{headerShown: false, animation:'fade_from_bottom'}}
+        />
+        <Stack.Screen
+          component={SignUp}
+          name="SignUp"
+          options={{headerShown: false, animation:'fade_from_bottom'}}
         />
         <Stack.Screen
           component={Completed}

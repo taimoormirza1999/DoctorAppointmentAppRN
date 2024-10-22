@@ -4,7 +4,7 @@ import {lightShadow, mediumShadow} from '../constants/Shadows';
 import {scale, ScaledSheet} from 'react-native-size-matters';
 
 import appointmentImage from '../images/Icons/Appointment.png';
-import {gray200, gray300, gray400, gray600} from '../constants/Colors';
+import {gray200, gray300, gray400, gray600, gray800, paleGreen} from '../constants/Colors';
 import {useNavigation} from '@react-navigation/native';
 import Home from '../screens/Home';
 import AppointmentSVG from '../svgs/AppointmentSVG';
@@ -18,7 +18,7 @@ const ItemCompo = ({children, image, text, active, handlerAction}) => {
       <View
         style={{
           padding: scale(7),
-          backgroundColor: active ? gray200 : 'white',
+          backgroundColor: active ? paleGreen : 'white',
           lightShadow,
           borderRadius: 50,
         }}>
@@ -35,40 +35,41 @@ const CustomBottomTab = ({activeTab, title, image, navigation}) => {
     appointment: () => navigation.navigate('MyAppointments'),
     doctors: () => navigation.navigate('AllDoctors'),
     notification: () => navigation.navigate('Notifications'),
-    profile: () => navigation.navigate('Home'),
+    profile: () => navigation.navigate('Profile'),
   };
-
+const activeTabColor=gray800;
+const nonActiveTabColor=gray400;
   return (
     <View style={[styles.bottomView]}>
       <ItemCompo
         text="Home"
         active={activeTab == 'home'}
         handlerAction={handlers.home}>
-        {<HomeSVG stroke={activeTab == 'home'?gray600:gray400}/>}
+        {<HomeSVG stroke={activeTab == 'home'?activeTabColor:nonActiveTabColor}/>}
       </ItemCompo>
       <ItemCompo
         text="Appointments"
         active={activeTab == 'appointments'}
         handlerAction={handlers.appointment}>
-        {<AppointmentSVG stroke={activeTab == 'appointments'?gray600:gray400}/>}
+        {<AppointmentSVG stroke={activeTab == 'appointments'?activeTabColor:nonActiveTabColor}/>}
       </ItemCompo>
       <ItemCompo
         text="Doctors"
         active={activeTab == 'doctors'}
         handlerAction={handlers.doctors}>
-        {<DoctorSVG stroke={activeTab == 'doctors'?gray600:gray400}/>}
+        {<DoctorSVG stroke={activeTab == 'doctors'?activeTabColor:nonActiveTabColor}/>}
       </ItemCompo>
       <ItemCompo
         text="Notifications"
         active={activeTab == 'notifications'}
         handlerAction={handlers.notification}>
-        {<NotificationSVG stroke={activeTab == 'notifications'?gray600:gray400}/>}
+        {<NotificationSVG stroke={activeTab == 'notifications'?activeTabColor:nonActiveTabColor}/>}
       </ItemCompo>
       <ItemCompo
         text="Profile"
         active={activeTab == 'profile'}
         handlerAction={handlers.profile}>
-        {<ProfileSVG stroke={activeTab == 'profile'?gray600:gray400}/>}
+        {<ProfileSVG stroke={activeTab == 'profile'?activeTabColor:nonActiveTabColor}/>}
       </ItemCompo>
     </View>
   );

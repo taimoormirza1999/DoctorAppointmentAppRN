@@ -1,3 +1,4 @@
+#import <Firebase.h>
 #import "AppDelegate.h"
 #import <GoogleMaps/GoogleMaps.h>
 #import <React/RCTBundleURLProvider.h>
@@ -6,6 +7,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+  [FIRApp configure];
   [GMSServices provideAPIKey:@"AIzaSyD9mUVWyCGKxCDgdDuoYImTzQz28KCU_js"];
   self.moduleName = @"TestProject";
   // You can add your custom initial props in the dictionary below.

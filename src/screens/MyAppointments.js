@@ -6,18 +6,18 @@ import CustomBottomTab from '../components/CustomBottomTab';
 import {ScaledSheet} from 'react-native-size-matters';
 import {width} from '../constants/DimensionFontSizes';
 import HeaderTitle from '../components/HeaderTitle';
-import { headingCommonStyle, headings, sectionSeprator } from '../constants/commonStyles';
+import { containerStyles, headingCommonStyle, headings, sectionSeprator } from '../constants/commonStyles';
 import AppointmentList from '../components/AppointmentList';
 
 const MyAppointments = ({navigation}) => {
   return (
     <SafeAreaWrapper backgroundColor={'white'}>
-    <View style={styles.container}>
+    <View style={containerStyles}>
       <ScrollView
         style={{}}
         showsVerticalScrollIndicator={false}>
-        <View style={styles.container}>
-          <HeaderTitle title="My Appointments" navigation={navigation}/>
+        <View style={containerStyles}>
+          <HeaderTitle title="My Appointments" navigation={navigation} goHome={true}/>
          
           <View style={{marginTop: 10, alignItems: 'center'}}>
             <AppointmentList navigation={navigation} />
