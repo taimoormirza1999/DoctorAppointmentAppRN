@@ -50,7 +50,7 @@ const DoctorCardHorizontal = ({
         <View
           style={[
             justRow,
-            {flex: 1, width: scale(100), height: '100%', marginLeft:scale(-7)},
+            {flex: 1, width: '75%',justifyContent:'space-between', height: '100%', marginLeft:scale(-7)},
             styles.reviewView,
           ]}>
           <Text style={styles.text}>{ratting} Reviews</Text>
