@@ -31,7 +31,7 @@ const HeaderTitle = ({title, icon, navigation,goHome}) => {
       .restDisplacementThreshold(0.1)
       .restSpeedThreshold(5)}
    
-   style={styles.header}>
+   style={[styles.header, ]}>
       <TouchableOpacity
         style={styles.backBtn}
         underlayColor="#ffffff00"

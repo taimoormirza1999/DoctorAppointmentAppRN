@@ -23,13 +23,13 @@ const Profile = ({navigation}) => {
       <View style={containerStyles}>
       <KeyboardAwareScrollView style={[{},containerStyles]}>
       <HeaderTitle  title={'Profile'} navigation={navigation}/>
-      <View style={[lightShadow,{ alignItems: 'center',   }]}>
-            <FastImage  resizeMode={FastImage.resizeMode.cover}  style={{ width: width * 0.39, height: width * 0.35 }} source={"users.gender" != 'male' && require('../images/profile-circle.png') } />
+      <View style={[{ alignItems: 'center',   }]}>
+            <FastImage  resizeMode={FastImage.resizeMode.contain}  style={{ width: width * 0.39, height: width * 0.39 }} source={"users.gender" != 'male' && require('../images/profile-circle.png') } />
             {/* <Text style={{ fontSize:fontSizes.medium, textAlign: "center", marginVertical: scale(10) }}>{"users.firstname" + " " + "users.lastname"} </Text>
             <Text style={{ fontSize: fontSizes.medium, textAlign: "center", color: gray300 }}>{"users.email"}</Text> */}
           </View>
           <View style={{flex: 0.8, width: '100%', height: '100%'}}>
-        <View style={{marginVertical: scale(15)}}>
+        <View style={{marginVertical: scale(5)}}>
           
         </View>
         <Input

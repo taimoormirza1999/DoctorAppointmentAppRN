@@ -1,24 +1,16 @@
-import { Text, TouchableOpacity, View} from 'react-native';
+import {Text, TouchableOpacity, View} from 'react-native';
 import React from 'react';
 import {lightShadow, mediumShadow} from '../constants/Shadows';
 import {scale, ScaledSheet} from 'react-native-size-matters';
 import {width} from '../constants/DimensionFontSizes';
 import {gray500, gray600, gray800} from '../constants/Colors';
-import {AlignSelf} from '../constants/commonStyles';
-import FastImage from 'react-native-fast-image';
+import { AlignSelf } from '../constants/commonStyles';
+import Icon from 'react-native-vector-icons/AntDesign';
 import LocationSVG from '../svgs/LocationSVG';
+import FastImage from 'react-native-fast-image';
 import StarSVG from '../svgs/StarSVG';
 
-
-const DoctorCardVertical = ({
-  image,
-  ratting,
-  doctorName,
-  category,
-  location,
-  reviews,
-  handleAction,
-}) => {
+const HospitalCardVertical = ({extraval1, image, ratting, doctorName, category,location, reviews,handleAction}) => {
   return (
     <TouchableOpacity
       onPress={handleAction}
@@ -29,12 +21,12 @@ const DoctorCardVertical = ({
   resizeMode={FastImage.resizeMode.cover} // You can adjust the resizeMode as needed
 />
       <Text style={styles.docName}>{doctorName}</Text>
-      <Text style={styles.docCat}>{category}</Text>
+      {/* <Text style={styles.docCat}>{category}</Text> */}
       <View style={[{flexDirection: 'row'}, AlignSelf, styles.locationView]}>
        
         <LocationSVG height={scale(13)} width={scale(13)}/>
         <Text style={styles.text}>
-          {location.length > 15 ? location.substring(0, 15) + '...' : location}
+          {location.length > 25 ? location.substring(0, 25) + '...' : location}
         </Text>
       </View>
       <View style={[{flexDirection: 'row'}, AlignSelf, styles.reviewView]}>
@@ -47,15 +39,17 @@ const DoctorCardVertical = ({
   );
 };
 
-export default DoctorCardVertical;
+export default HospitalCardVertical;
 
 const styles = ScaledSheet.create({
   docImg: {
     width: '100%',
-    height: width * 0.26,
-    borderRadius: '10@s',
+    height: width * 0.36,
+    // borderRadius: '10@s',
     alignSelf: 'center',
-    paddingTop: 10,
+    paddingTop: '10@s',
+    borderTopLeftRadius:'10@s',
+    borderTopRightRadius:'10@s',
   },
   Icon: {
     width: '12@s',
@@ -73,8 +67,8 @@ const styles = ScaledSheet.create({
     color: gray800,
   },
   docItem: {
-    width: '47.5%',
-    paddingHorizontal: '2%',
+    width: '94%',
+    // paddingHorizontal: '2%',
     backgroundColor: '#fff',
     borderRadius: 10,
     margin: 10,
