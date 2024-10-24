@@ -1,15 +1,28 @@
-import {View, Text, StyleSheet, Image, TouchableOpacity} from 'react-native';
+import {View, Text, StyleSheet, Image, TouchableOpacity, Alert} from 'react-native';
 import React, {useEffect} from 'react';
 import SuccessSVG from '../svgs/SuccessSVG';
 import Button from '../components/Button';
-import {AlignSelf, body, headings, w70, w80} from '../constants/commonStyles';
-import {scale, ScaledSheet} from 'react-native-size-matters';
+import {AlignSelf, body, headings, w80} from '../constants/commonStyles';
+import {ScaledSheet} from 'react-native-size-matters';
+import {displayNotification} from '../utils/notifications';
+import { AllDoctorsData } from '../constants/data';
 
 const Success = ({navigation, route}) => {
   const selectedDate = route.params?.selectedDate || null;
   const formattedDate = null;
   useEffect(() => {
     if (route.params?.doctorName) {
+      const docotorMedia = route.params.docotorMedia;
+      displayNotification(
+        'Appointment Confirmed!',
+        `Your appointment with ${
+          route.params?.doctorName
+        } is confirmed on ${formatDate(new Date(selectedDate || null))}, at ${
+          route.params?.selectedSlot
+        }!`,
+        docotorMedia,
+      );
+      console.log(route.params.docotorMedia)
     }
   }, [route.params?.doctorName]);
   const formatDate = date => {

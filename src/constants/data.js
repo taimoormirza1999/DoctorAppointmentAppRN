@@ -49,8 +49,34 @@ export const AllHospitalsData = [
     },
 
   ];
+
+  export const AllImages=[
+    { image_path: require('../images/main/Doctor1.png'),},
+    { image_path: require('../images/main/Doctor2.png'),},
+    { image_path: require('../images/main/Doctor3.png'),},
+    { image_path: require('../images/main/Doctor4.png'),},
+    { image_path: require('../images/main/Doctor5.png'),},
+    { image_path: require('../images/main/Doctor6.png'),},
+    { image_path: require('../images/main/Doctor7.png'),},
+    { image_path: require('../images/main/Doctor8.png'),},
+    { image_path: require('../images/main/Doctor9.png'),},
+    { image_path: require('../images/main/Doctor10.png'),},
+    { image_path: require('../images/main/Doctor11.png'),},
+    { image_path: require('../images/main/Doctor12.png'),},
+    { image_path: require('../images/main/Doctor13.png'),},
+    { image_path: require('../images/main/Doctor14.png'),},
+    { image_path: require('../images/main/Doctor15.png'),},
+    { image_path: require('../images/main/Doctor16.png'),},
+    { image_path: require('../images/main/Doctor17.png'),},
+    { image_path: require('../images/main/Doctor18.png'),},
+    { image_path: require('../images/main/Doctor19.png'),},
+    { image_path: require('../images/main/Doctor20.png'),},
+    { image_path: require('../images/main/Doctor21.png'),},
+    { image_path: require('../images/main/Doctor-22.png'),},
+  ]
 export const AllDoctorsData = [
     {
+      imageId:7,
       image: DoctorsImages.doctor7,
       image_path: require('../images/main/Doctor7.png'),
       rating: "5",
@@ -59,7 +85,7 @@ export const AllDoctorsData = [
       category: "Cardiologist",
       location: "Cardiology Center, USA",
     },
-    {
+    {imageId:2,
       image: DoctorsImages.doctor2,
       image_path: require('../images/main/Doctor2.png'),
       rating: "4.9",
@@ -68,7 +94,7 @@ export const AllDoctorsData = [
       category: "Gynecologist",
       location: "Women's Clinic, Seattle, USA",
     },
-    {
+    {imageId:3,
       image: DoctorsImages.doctor3,
        image_path: require('../images/main/Doctor3.png'),
       rating: "5",
@@ -77,7 +103,7 @@ export const AllDoctorsData = [
       category: "Orthopedic Surgery",
       location: "Maple Associates, NY, USA",
     },
-    {
+    {imageId:4,
       image: DoctorsImages.doctor4,
        image_path: require('../images/main/Doctor4.png'),
       rating: "4.6",
@@ -86,7 +112,7 @@ export const AllDoctorsData = [
       category: "Pediatrics",
       location: "Serenity Pediatrics Clinic, USA",
     },
-    {
+    {imageId:6,
       image: DoctorsImages.doctor6,
        image_path: require('../images/main/Doctor6.png'),
       rating: "4.8",
@@ -95,7 +121,7 @@ export const AllDoctorsData = [
       category: "Dermatologist",
       location: "Skin Care Clinic, Los Angeles, USA",
     },
-    {
+    {imageId:5,
       image: DoctorsImages.doctor5,
        image_path: require('../images/main/Doctor5.png'),
       rating: "4.7",
@@ -104,7 +130,7 @@ export const AllDoctorsData = [
       category: "Neurologist",
       location: "Neuro Health Center, Chicago, USA",
     },
-    {
+    {imageId:8,
       image: DoctorsImages.doctor8,
        image_path: require('../images/main/Doctor8.png'),
       rating: "4.9",
@@ -113,7 +139,7 @@ export const AllDoctorsData = [
       category: "Ophthalmologist",
       location: "Vision Care Clinic, Houston, USA",
     },
-    {
+    {imageId:17,
       image: DoctorsImages.doctor17,
        image_path: require('../images/main/Doctor17.png'),
       rating: "5",
@@ -122,7 +148,7 @@ export const AllDoctorsData = [
       category: "Dentist",
       location: "Bright Smiles Dental, Miami, USA",
     },
-    {
+    {imageId:9,
       image: DoctorsImages.doctor9,
        image_path: require('../images/main/Doctor9.png'),
       rating: "4.8",
@@ -131,7 +157,7 @@ export const AllDoctorsData = [
       category: "Psychiatrist",
       location: "Mental Wellness Center, San Francisco, USA",
     },
-    {
+    {imageId:16,
       image: DoctorsImages.doctor16,
        image_path: require('../images/main/Doctor16.png'),
       rating: "4.7",
@@ -144,6 +170,7 @@ export const AllDoctorsData = [
 
   export const DentistryDoctors = [
     {
+      imageId: 18,
       image: DoctorsImages.doctor18,
       image_path: require('../images/main/Doctor18.png'),
       rating: "5",
@@ -153,6 +180,7 @@ export const AllDoctorsData = [
       location: "Bright Smiles Dental, Miami, USA",
     },
     {
+      imageId: 14,
       image: DoctorsImages.doctor14,
       image_path: require('../images/main/Doctor14.png'),
       rating: "4.9",
@@ -162,6 +190,7 @@ export const AllDoctorsData = [
       location: "Pearl Dental Clinic, Houston, USA",
     },
     {
+      imageId: 6,
       image: DoctorsImages.doctor6,
       image_path: require('../images/main/Doctor6.png'),
       rating: "4.8",
@@ -171,6 +200,7 @@ export const AllDoctorsData = [
       location: "Dental Care Associates, Chicago, USA",
     },
     {
+      imageId: 17,
       image: DoctorsImages.doctor17,
       image_path: require('../images/main/Doctor17.png'),
       rating: "4.7",
@@ -180,6 +210,7 @@ export const AllDoctorsData = [
       location: "Healthy Smiles Dental, New York, USA",
     },
     {
+      imageId: 19,
       image: DoctorsImages.doctor19,
       image_path: require('../images/main/Doctor19.png'),
       rating: "5",
@@ -192,6 +223,7 @@ export const AllDoctorsData = [
   
   export const CardiologyDoctors = [
     {
+      imageId: 20,
       image: DoctorsImages.doctor20,
       image_path: require('../images/main/Doctor20.png'),
       rating: "5",
@@ -201,6 +233,7 @@ export const AllDoctorsData = [
       location: "Cardiology Center, USA",
     },
     {
+      imageId: 11,
       image: DoctorsImages.doctor11,
       image_path: require('../images/main/Doctor11.png'),
       rating: "4.9",
@@ -210,6 +243,7 @@ export const AllDoctorsData = [
       location: "Heart Health Clinic, New York, USA",
     },
     {
+      imageId: 16,
       image: DoctorsImages.doctor16,
       image_path: require('../images/main/Doctor16.png'),
       rating: "5",
@@ -219,6 +253,7 @@ export const AllDoctorsData = [
       location: "Advanced Cardiac Care, Los Angeles, USA",
     },
     {
+      imageId: 13,
       image: DoctorsImages.doctor13,
       image_path: require('../images/main/Doctor13.png'),
       rating: "4.8",
@@ -228,6 +263,7 @@ export const AllDoctorsData = [
       location: "CardioHealth Clinic, Chicago, USA",
     },
     {
+      imageId: 17,
       image: DoctorsImages.doctor17,
       image_path: require('../images/main/Doctor17.png'),
       rating: "4.7",
@@ -240,6 +276,7 @@ export const AllDoctorsData = [
   
   export const PulmonologyDoctors = [
     {
+      imageId: 10,
       image: DoctorsImages.doctor10,
       image_path: require('../images/main/Doctor10.png'),
       rating: "5",
@@ -249,6 +286,7 @@ export const AllDoctorsData = [
       location: "Lung Health Center, New York, USA",
     },
     {
+      imageId: 17,
       image: DoctorsImages.doctor17,
       image_path: require('../images/main/Doctor17.png'),
       rating: "4.8",
@@ -258,6 +296,7 @@ export const AllDoctorsData = [
       location: "Pulmonary Care Clinic, Chicago, USA",
     },
     {
+      imageId: 11,
       image: DoctorsImages.doctor11,
       image_path: require('../images/main/Doctor11.png'),
       rating: "4.9",
@@ -267,6 +306,7 @@ export const AllDoctorsData = [
       location: "Breathe Well Clinic, Houston, USA",
     },
     {
+      imageId: 3,
       image: DoctorsImages.doctor3,
       image_path: require('../images/main/Doctor3.png'),
       rating: "5",
@@ -276,6 +316,7 @@ export const AllDoctorsData = [
       location: "Respiratory Wellness Center, Los Angeles, USA",
     },
     {
+      imageId: 1,
       image: DoctorsImages.doctor1,
       image_path: require('../images/main/Doctor1.png'),
       rating: "4.7",
@@ -288,6 +329,7 @@ export const AllDoctorsData = [
   
   export const GeneralDoctors = [
     {
+      imageId: 5,
       image: DoctorsImages.doctor5,
       image_path: require('../images/main/Doctor5.png'),
       rating: "5",
@@ -297,6 +339,7 @@ export const AllDoctorsData = [
       location: "General Health Clinic, New York, USA",
     },
     {
+      imageId: 4,
       image: DoctorsImages.doctor4,
       image_path: require('../images/main/Doctor4.png'),
       rating: "4.9",
@@ -306,6 +349,7 @@ export const AllDoctorsData = [
       location: "Wellness Clinic, Los Angeles, USA",
     },
     {
+      imageId: 3,
       image: DoctorsImages.doctor3,
       image_path: require('../images/main/Doctor3.png'),
       rating: "4.7",
@@ -315,6 +359,7 @@ export const AllDoctorsData = [
       location: "Primary Care Center, Chicago, USA",
     },
     {
+      imageId: 7,
       image: DoctorsImages.doctor7,
       image_path: require('../images/main/Doctor7.png'),
       rating: "4.6",
@@ -324,6 +369,7 @@ export const AllDoctorsData = [
       location: "Health Hub Clinic, Miami, USA",
     },
     {
+      imageId: 1,
       image: DoctorsImages.doctor1,
       image_path: require('../images/main/Doctor1.png'),
       rating: "5",
@@ -335,6 +381,7 @@ export const AllDoctorsData = [
   ];
   export const NeurologyDoctors = [
     {
+      imageId: 9,
       image: DoctorsImages.doctor9,
       image_path: require('../images/main/Doctor9.png'),
       rating: "5",
@@ -344,6 +391,7 @@ export const AllDoctorsData = [
       location: "Neuro Health Center, New York, USA",
     },
     {
+      imageId: 10,
       image: DoctorsImages.doctor10,
       image_path: require('../images/main/Doctor10.png'),
       rating: "4.9",
@@ -353,6 +401,7 @@ export const AllDoctorsData = [
       location: "Brain Care Clinic, Los Angeles, USA",
     },
     {
+      imageId: 11,
       image: DoctorsImages.doctor11,
       image_path: require('../images/main/Doctor11.png'),
       rating: "5",
@@ -362,6 +411,7 @@ export const AllDoctorsData = [
       location: "Advanced Neurology Center, Chicago, USA",
     },
     {
+      imageId: 17,
       image: DoctorsImages.doctor17,
       image_path: require('../images/main/Doctor17.png'),
       rating: "4.8",
@@ -371,6 +421,7 @@ export const AllDoctorsData = [
       location: "Neuro Specialists Clinic, Houston, USA",
     },
     {
+      imageId: 19,
       image: DoctorsImages.doctor19,
       image_path: require('../images/main/Doctor19.png'),
       rating: "4.7",
@@ -383,6 +434,7 @@ export const AllDoctorsData = [
   
   export const GastroenterologistDoctors = [
     {
+      imageId: 16,
       image: DoctorsImages.doctor16,
       image_path: require('../images/main/Doctor16.png'),
       rating: "5",
@@ -392,6 +444,7 @@ export const AllDoctorsData = [
       location: "Gastro Health Center, New York, USA",
     },
     {
+      imageId: 18,
       image: DoctorsImages.doctor18,
       image_path: require('../images/main/Doctor18.png'),
       rating: "4.8",
@@ -401,6 +454,7 @@ export const AllDoctorsData = [
       location: "Digestive Care Clinic, Chicago, USA",
     },
     {
+      imageId: 19,
       image: DoctorsImages.doctor19,
       image_path: require('../images/main/Doctor19.png'),
       rating: "5",
@@ -410,6 +464,7 @@ export const AllDoctorsData = [
       location: "Gut Health Clinic, Miami, USA",
     },
     {
+      imageId: 20,
       image: DoctorsImages.doctor20,
       image_path: require('../images/main/Doctor20.png'),
       rating: "4.7",
@@ -419,6 +474,7 @@ export const AllDoctorsData = [
       location: "Digestive Wellness Center, Houston, USA",
     },
     {
+      imageId: 1,
       image: DoctorsImages.doctor1,
       image_path: require('../images/main/Doctor1.png'),
       rating: "4.9",
@@ -431,6 +487,7 @@ export const AllDoctorsData = [
   
   export const LaboratoryDoctors = [
     {
+      imageId: 3,
       image: DoctorsImages.doctor3,
       image_path: require('../images/main/Doctor3.png'),
       rating: "4.9",
@@ -440,6 +497,7 @@ export const AllDoctorsData = [
       location: "Health Lab, New York, USA",
     },
     {
+      imageId: 7,
       image: DoctorsImages.doctor7,
       image_path: require('../images/main/Doctor7.png'),
       rating: "4.7",
@@ -449,6 +507,7 @@ export const AllDoctorsData = [
       location: "Clinical Lab Solutions, Boston, USA",
     },
     {
+      imageId: 16,
       image: DoctorsImages.doctor16,
       image_path: require('../images/main/Doctor16.png'),
       rating: "4.8",
@@ -458,6 +517,7 @@ export const AllDoctorsData = [
       location: "Pathology Lab Center, Chicago, USA",
     },
     {
+      imageId: 21,
       image: DoctorsImages.doctor21,
       image_path: require('../images/main/Doctor21.png'),
       rating: "5",
@@ -467,6 +527,7 @@ export const AllDoctorsData = [
       location: "LabCorp Health, Miami, USA",
     },
     {
+      imageId: 1,
       image: DoctorsImages.doctor1,
       image_path: require('../images/main/Doctor1.png'),
       rating: "4.9",
@@ -479,6 +540,7 @@ export const AllDoctorsData = [
   
   export const VaccinationDoctors = [
     {
+      imageId: 19,
       image: DoctorsImages.doctor19,
       rating: "5",
       reviews: "3,200",
@@ -487,6 +549,7 @@ export const AllDoctorsData = [
       location: "Vaccine Care Clinic, New York, USA",
     },
     {
+      imageId: 11,
       image: DoctorsImages.doctor11,
       rating: "4.8",
       reviews: "2,100",
@@ -495,6 +558,7 @@ export const AllDoctorsData = [
       location: "Immunization Center, Boston, USA",
     },
     {
+      imageId: 20,
       image: DoctorsImages.doctor20,
       rating: "5",
       reviews: "2,800",
@@ -503,6 +567,7 @@ export const AllDoctorsData = [
       location: "Vaccine Wellness Center, Los Angeles, USA",
     },
     {
+      imageId: 16,
       image: DoctorsImages.doctor16,
       rating: "4.9",
       reviews: "1,750",
@@ -511,6 +576,7 @@ export const AllDoctorsData = [
       location: "Immunity Health Clinic, Chicago, USA",
     },
     {
+      imageId: 1,
       image: DoctorsImages.doctor1,
       rating: "4.7",
       reviews: "1,400",
@@ -519,6 +585,5 @@ export const AllDoctorsData = [
       location: "Vaccine Hub Clinic, Houston, USA",
     },
   ];
-      
 
       

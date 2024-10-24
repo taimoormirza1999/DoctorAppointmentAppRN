@@ -55,7 +55,7 @@ const BookAppointment = ({navigation, route}) => {
   const [days, setDays] = useState([]);
 
   useEffect(() => {
-    if (route.params?.doctorName) {
+    if (route.params?.doctorName ) {
 
     }
   }, [route.params?.doctorName]);
@@ -177,7 +177,7 @@ const BookAppointment = ({navigation, route}) => {
           <Button
             text={'Done'}
             handleNext={() => {
-              navigation.navigate('Success', {doctorName:route.params?.doctorName, selectedDate:selectedDate, selectedSlot:selectedSlot});
+              navigation.navigate('Success', {docotorMedia:route.params?.doctorMedia,doctorName:route.params?.doctorName, selectedDate:selectedDate, selectedSlot:selectedSlot});
             }}
           />
         </View>

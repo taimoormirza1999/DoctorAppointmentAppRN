@@ -1,11 +1,17 @@
 import {View, Text, LogBox} from 'react-native';
-import React from 'react';
+import React, { useEffect } from 'react';
 import AppNavigator from './src/AppNavigator';
 import AddressWrapper from './src/components/AddressWrapper';
 import { UserProvider } from './src/components/context/UserContext';
+import { checkApplicationPermission, hideAllBadgeCount, requestUserPermission } from './src/utils/notifications';
 
 const App = () => {
   LogBox.ignoreAllLogs();
+  useEffect(()=>{
+    checkApplicationPermission();
+    requestUserPermission();
+    hideAllBadgeCount()
+  },[])
   return (
     <UserProvider>
       <AppNavigator />

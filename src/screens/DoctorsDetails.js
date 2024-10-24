@@ -174,6 +174,7 @@ const DoctorsDetails = ({navigation, route}) => {
             handleNext={() =>
               navigation.navigate('BookAppointment', {
                 doctorName: item?.doctorName,
+                doctorMedia: item?.imageId,
               })
             }
           />
