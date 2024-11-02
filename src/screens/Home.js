@@ -14,6 +14,7 @@ import {
   justRow,
   relative,
   w100,
+  w65,
   w70,
 } from '../constants/commonStyles';
 import LocationSVG from '../svgs/LocationSVG';
@@ -33,9 +34,9 @@ import {AnimatedWrapper} from '../constants/AnimationEntering';
 import NotificationBell from '../components/NotificationBell';
 import HospitalList from '../components/HospitalList';
 import LinearGradient from 'react-native-linear-gradient';
-import Test from '../components/AddressWrapper';
 import AddressWrapper from '../components/AddressWrapper';
 import { UserContext } from '../components/context/UserContext';
+import { width } from '../constants/DimensionFontSizes';
 const HeaderHome = ({navigation}) => {
   const [address,, requestLocationPermission] = useContext(UserContext);
 
@@ -98,9 +99,10 @@ const Home = ({navigation}) => {
           showsVerticalScrollIndicator={false}>
           <View style={styles.containe}>
             {/* header */}
+            <View style={styles.containedWidth}>
             <HeaderHome navigation={navigation} />
             <View
-              style={{borderRadius: 10, marginHorizontal: scale(10)}}>
+              style={[{borderRadius: 10, marginHorizontal: scale(10)}]}>
               <FastImage
                 source={SliderData.image}
                 style={[styles.banner]}
@@ -111,8 +113,9 @@ const Home = ({navigation}) => {
                 end={{x: 1, y: 0}}
                 colors={[
                   'rgba(81,147,139,0.9)',
-                  'rgba(81,147,139,0.15)',
-                  'rgba(81,147,139,0.1)',
+                  'rgba(81,147,139,0.5)',
+                  'rgba(81,147,139,0.0)',
+                  'rgba(81,147,139,0.4)',
                 ]}
                 style={[
                   absolute,
@@ -121,11 +124,12 @@ const Home = ({navigation}) => {
                     // backgroundColor: 'rgba(0,0,0,1',
                     height: '95%',
                     width: '100%',
+                    // margin: '100%',
                     marginTop: scale(7),
                     borderRadius: scale(10),
                   },
                 ]}>
-                <View style={[w70, {left: scale(13), top: '30%'}]}>
+                <View style={[w65, {left: scale(13), top: '30%'}]}>
                   <Text style={[headings.h2, styles.SlideHeading]}>
                     {SliderData.title}
                   </Text>
@@ -135,12 +139,13 @@ const Home = ({navigation}) => {
                 </View>
               </LinearGradient>
             </View>
+            </View>
 
-            <AnimatedWrapper style={styles.section}>
+            <AnimatedWrapper style={[styles.section,styles.containedWidth]}>
               <Text style={[headings.h1, styles.heading]}>Categories</Text>
               <Categories navigation={navigation} />
             </AnimatedWrapper>
-            <View style={[styles.section]}>
+            <View style={[styles.section,styles.containedWidth]}>
               <Text style={[headings.h1, styles.heading]}>
                 Top Rated Doctors
               </Text>
@@ -153,8 +158,8 @@ const Home = ({navigation}) => {
                 />
               </View>
             </View>
-            <View style={[{marginTop: scale(-35)}]}>
-              <Text style={[headings.h1, styles.heading]}>Hospitals</Text>
+            <View style={[{marginTop: scale(-35),marginLeft:scale(10)},]}>
+              <Text style={[headings.h1, styles.heading,{marginLeft:scale(10)}]}>Hospitals</Text>
               <View style={{}}>
                 <HospitalList
                   navigation={navigation}
@@ -163,7 +168,7 @@ const Home = ({navigation}) => {
               </View>
             </View>
             {/* Neurologist */}
-            <View style={[styles.section]}>
+            <View style={[styles.section,styles.containedWidth]}>
               <Text style={[headings.h1, styles.heading]}>
                 Top Neurologist Doctors
               </Text>
@@ -178,7 +183,7 @@ const Home = ({navigation}) => {
             </View>
             {/* <Test/> */}
             {/*  Health Care */}
-            <View style={[styles.section]}>
+            <View style={[styles.section,styles.containedWidth]}>
               <Text style={[headings.h1, styles.heading]}>
                 Top Health Care Doctors
               </Text>
@@ -203,9 +208,13 @@ export default Home;
 const styles = ScaledSheet.create({
   container: {
     flex: 1,
-    width: '96%',
+    width: '100%',
     alignSelf: 'center',
     backgroundColor: '#fff',
+  },
+  containedWidth:{
+    width: '96%',
+    alignSelf: 'center',
   },
   section: {
     marginTop: '20@s',

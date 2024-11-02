@@ -105,7 +105,7 @@ const OnBoarding = () => {
             image: (
               <DynamicComponent
                 handleNext={() => {
-                  navigation.navigate('Home');
+                  navigation.navigate('SignIn');
                 }}
                 title="Thousands of Online Specialists"
                 description=" Explore a Vast Array of Online Medical Specialists, Offering an Extensive Range of Expertise Tailored to Your Healthcare Needs."

@@ -4,6 +4,7 @@ import AppNavigator from './src/AppNavigator';
 import AddressWrapper from './src/components/AddressWrapper';
 import { UserProvider } from './src/components/context/UserContext';
 import { checkApplicationPermission, hideAllBadgeCount, requestUserPermission } from './src/utils/notifications';
+import { AppointmentsProvider } from './src/components/context/AppointmentsContext';
 
 const App = () => {
   LogBox.ignoreAllLogs();
@@ -14,7 +15,9 @@ const App = () => {
   },[])
   return (
     <UserProvider>
+      <AppointmentsProvider>
       <AppNavigator />
+      </AppointmentsProvider>
     </UserProvider>
   );
 };

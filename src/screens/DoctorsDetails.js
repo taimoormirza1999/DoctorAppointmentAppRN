@@ -72,7 +72,7 @@ const tabData = [
     fill: primaryDarkColor,
     rating: '2000',
     label: 'rating',
-    iconSize: {width: 0.057, height: 0.057}, // Custom icon size for this one
+    iconSize: {width: 0.057, height: 0.057}, 
   },
   {
     icon: MessagesSVG,
@@ -174,12 +174,14 @@ const DoctorsDetails = ({navigation, route}) => {
             handleNext={() =>
               navigation.navigate('BookAppointment', {
                 doctorName: item?.doctorName,
+                doctorCategory: item?.category,
+                doctorLocation: item?.location,
+                doctorName: item?.doctorName,
                 doctorMedia: item?.imageId,
               })
             }
           />
         </View>
-        {/* <CustomBottomTab activeTab={'doctors'} navigation={navigation} /> */}
       </View>
     </SafeAreaWrapper>
   );
@@ -250,60 +252,5 @@ const styles = ScaledSheet.create({
     fontWeight: '400',
     paddingTop: '3@s',
   },
-  // heading: {
-  //   color: '#000',
-  //   fontSize: '17@s',
-  //   fontWeight: '700',
-  //   marginLeft: 15,
-  // },
-  // linearGradient: {
-  //   width: 120,
-  //   height: 80,
-  //   borderRadius: 10,
-  //   marginLeft: 10,
-  //   justifyContent: 'center',
-  //   alignItems: 'center',
-  // },
-  // catName: {
-  //   color: '#fff',
-  //   fontSize: 16,
-  //   fontWeight: '700',
-  // },
-  // docItem: {
-  //   width: '45%',
-
-  //   backgroundColor: '#fff',
-  //   borderRadius: 10,
-  //   borderWidth: 0.2,
-  //   margin: 10,
-  // },
-  // docImg: {
-  //   width: 60,
-  //   height: 60,
-  //   borderRadius: 30,
-  //   alignSelf: 'center',
-  //   marginTop: 20,
-  // },
-  // docName: {
-  //   fontSize: 18,
-  //   fontWeight: '700',
-  //   alignSelf: 'center',
-  //   marginTop: 10,
-  // },
-  // docSpl: {
-  //   fontSize: 14,
-  //   marginTop: 5,
-  //   fontWeight: '600',
-  //   alignSelf: 'center',
-  //   color: 'green',
-  //   backgroundColor: '#f2f2f2',
-  //   padding: 5,
-  //   borderRadius: 10,
-  // },
-  // status: {
-  //   fontSize: 14,
-  //   marginTop: 5,
-  //   fontWeight: '600',
-  //   alignSelf: 'center',
-  // },
+ 
 });

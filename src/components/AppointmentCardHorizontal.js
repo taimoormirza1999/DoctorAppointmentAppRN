@@ -1,4 +1,4 @@
-import {Text, TouchableOpacity, View} from 'react-native';
+import {Alert, Text, TouchableOpacity, View} from 'react-native';
 import React from 'react';
 import {cardShadow, lightShadow, mediumShadow} from '../constants/Shadows';
 import {scale, ScaledSheet} from 'react-native-size-matters';
@@ -16,6 +16,7 @@ import {AlignSelf, headings, justRow, w100} from '../constants/commonStyles';
 import LocationSVG from '../svgs/LocationSVG';
 import FastImage from 'react-native-fast-image';
 import Button from '../components/Button';
+import { useAppointments } from './context/AppointmentsContext';
 
 const AppointmentCardHorizontal = ({
   extraval1,
@@ -26,11 +27,14 @@ const AppointmentCardHorizontal = ({
   location,
   reviews,
   handleAction,
+  time
 }) => {
+  const { removeAppointment } = useAppointments();
+
   return (
     <View style={[{flex: 1}, styles.cardItem, cardShadow,{}]}>
       <Text style={[headings.h3, styles.dateText]}>
-        May 22, 2023 - 10.00 AM
+       {time} 
       </Text>
       <View style={[styles.docItem]}>
         <View style={styles.ImageSide}>
@@ -56,7 +60,29 @@ const AppointmentCardHorizontal = ({
       <View style={[justRow, w100, AlignSelf, {paddingTop: scale(7)}]}>
         <Button
           text={'Cancel'}
-          handleNext={() => {}}
+          handleNext={() => {
+            Alert.alert(
+              "Cancel Appointment", // Alert title
+              "Are you sure you want to cancel the appointment?", // Alert message
+              [
+                {
+                  text: "No", // Cancel button text
+                  onPress: () => console.log("Appointment not canceled"), // Do nothing if 'No' is pressed
+                  style: "cancel",
+                },
+                {
+                  text: "Yes", // Confirm button text
+                  onPress: () => {
+                    removeAppointment(doctorName)
+                    // Call function to cancel the appointment here
+                    console.log("Appointment canceled");
+                  },
+                  style: "destructive",
+                },
+              ],
+              { cancelable: false }
+            );
+          }}
           paddingVerical={scale(10)}
           width={'47%'}
           backgroundColor={gray300}
@@ -81,12 +107,12 @@ export default AppointmentCardHorizontal;
 
 const styles = ScaledSheet.create({
   cardItem: {
-    paddingVertical: '15@s',
+    paddingVertical: '13@s',
     marginVertical: '5@s',
     paddingHorizontal: '13@s',
     borderRadius: '13@s',
     backgroundColor: '#fff',
-    borderWidth:1,
+    borderWidth:0.5,
     borderColor:gray200,
   
   },

@@ -5,7 +5,6 @@ import DoctorCardVertical from './DoctorCardVertical';
 import DoctorCardHorizontal from './DoctorCardHorizontal';
 import {AnimatedWrapper} from '../constants/AnimationEntering';
 import {width} from '../constants/DimensionFontSizes';
-import { Text } from 'react-native-paper';
 import HospitalCardVertical from './HospitalCardVertical';
 
 const HospitalList = ({doctorsData, navigation, type = 'vertical'}) => {
@@ -32,7 +31,7 @@ const HospitalList = ({doctorsData, navigation, type = 'vertical'}) => {
     //     );
     //   })}
     // </ScrollView>
-    <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} style={{width:'100%'}}>
+    <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} style={{width:'100%', }}>
       {doctorsData.map((item, index) => {
         return (
           <View style={{width:width*0.65}} key={index}>

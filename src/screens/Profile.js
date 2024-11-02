@@ -22,7 +22,7 @@ const Profile = ({navigation}) => {
     
       <View style={containerStyles}>
       <KeyboardAwareScrollView style={[{},containerStyles]}>
-      <HeaderTitle  title={'Profile'} navigation={navigation}/>
+      <HeaderTitle  title={'Profile'} navigation={navigation} goHome={true}/>
       <View style={[{ alignItems: 'center',   }]}>
             <FastImage  resizeMode={FastImage.resizeMode.contain}  style={{ width: width * 0.39, height: width * 0.39 }} source={"users.gender" != 'male' && require('../images/profile-circle.png') } />
             {/* <Text style={{ fontSize:fontSizes.medium, textAlign: "center", marginVertical: scale(10) }}>{"users.firstname" + " " + "users.lastname"} </Text>

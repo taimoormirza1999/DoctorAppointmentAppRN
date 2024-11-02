@@ -38,7 +38,7 @@ const SignIn = ({navigation}) => {
     return navigation.navigate('SignUp')
   }
   const handleLogin=()=>{
-    return navigation.navigate('SignUp')
+    return navigation.navigate('Home')
   }
   const signIn = async () => {
     try {

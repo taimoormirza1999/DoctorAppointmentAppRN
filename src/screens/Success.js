@@ -5,7 +5,8 @@ import Button from '../components/Button';
 import {AlignSelf, body, headings, w80} from '../constants/commonStyles';
 import {ScaledSheet} from 'react-native-size-matters';
 import {displayNotification} from '../utils/notifications';
-import { AllDoctorsData } from '../constants/data';
+import { AllDoctorsData, AllImages } from '../constants/data';
+import { DoctorsImages } from '../constants/DoctorsImages';
 
 const Success = ({navigation, route}) => {
   const selectedDate = route.params?.selectedDate || null;
@@ -22,7 +23,7 @@ const Success = ({navigation, route}) => {
         }!`,
         docotorMedia,
       );
-      console.log(route.params.docotorMedia)
+      console.log(route.params)
     }
   }, [route.params?.doctorName]);
   const formatDate = date => {
@@ -50,7 +51,13 @@ const Success = ({navigation, route}) => {
           <Button
             text={'Done'}
             handleNext={() => {
-              navigation.navigate('MyAppointments');
+              navigation.navigate('MyAppointments',  { item:  { 
+                image: AllImages[route.params.docotorMedia-1]?.image_path,          
+                doctorName:  route.params?.doctorName,
+                category: route.params?.doctorCategory,
+                location: route.params?.doctorLocation,
+                time: formatDate(new Date(selectedDate || null))+" - "+route.params?.selectedSlot
+              },});
             }}
           />
         </View>

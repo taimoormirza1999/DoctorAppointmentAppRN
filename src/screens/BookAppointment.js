@@ -177,7 +177,11 @@ const BookAppointment = ({navigation, route}) => {
           <Button
             text={'Done'}
             handleNext={() => {
-              navigation.navigate('Success', {docotorMedia:route.params?.doctorMedia,doctorName:route.params?.doctorName, selectedDate:selectedDate, selectedSlot:selectedSlot});
+              navigation.navigate('Success', {
+                docotorMedia:route.params?.doctorMedia,
+                doctorName:route.params?.doctorName,
+                doctorCategory:route.params?.doctorCategory, 
+                doctorLocation:route.params?.doctorLocation, selectedDate:selectedDate, selectedSlot:selectedSlot});
             }}
           />
         </View>

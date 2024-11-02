@@ -26,7 +26,7 @@ const DoctorCardVertical = ({
       <FastImage
   source={image}
   style={[styles.docImg, lightShadow]}
-  resizeMode={FastImage.resizeMode.cover} // You can adjust the resizeMode as needed
+  resizeMode={FastImage.resizeMode.cover} 
 />
       <Text style={styles.docName}>{doctorName}</Text>
       <Text style={styles.docCat}>{category}</Text>
@@ -55,7 +55,7 @@ const styles = ScaledSheet.create({
     height: width * 0.26,
     borderRadius: '10@s',
     alignSelf: 'center',
-    paddingTop: 10,
+    paddingTop: '8@s',
   },
   Icon: {
     width: '12@s',
@@ -73,11 +73,11 @@ const styles = ScaledSheet.create({
     color: gray800,
   },
   docItem: {
-    width: '47.5%',
-    paddingHorizontal: '2%',
+    width: '45.5%',
+    paddingHorizontal: '1.5%',
     backgroundColor: '#fff',
     borderRadius: 10,
-    margin: 10,
+    margin: '7@s',
     paddingVertical: '6@s',
   },
 

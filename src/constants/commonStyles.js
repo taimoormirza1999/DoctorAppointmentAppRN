@@ -22,6 +22,9 @@ export const w100={
 export const w70={
  width:'70%'
 }
+export const w65={
+ width:'65%'
+}
 export const w80={
  width:'80%'
 }
